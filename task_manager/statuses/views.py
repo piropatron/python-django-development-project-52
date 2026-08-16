@@ -1,14 +1,16 @@
 from django.contrib import messages
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 from .models import Status
 from .forms import StatusCreateForm, StatusChangeForm
 
 
 # Create your views here.
-class IndexView(View):
+class IndexView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         statuses = Status.objects.all()[:15]
         return render(
@@ -20,7 +22,7 @@ class IndexView(View):
         )
 
 
-class CreateView(View):
+class CreateView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         form = StatusCreateForm()
         return render(
@@ -41,11 +43,24 @@ class CreateView(View):
 
 
 
-class DeleteView(View):
-    pass
+class DeleteView(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        status_id = kwargs.get("pk")
+
+        return render(
+            request, "statuses/delete.html", {"status_id": status_id}
+        )
+
+    def post(self, request, *args, **kwargs):
+        status_id = kwargs.get("pk")
+        user = get_object_or_404(Status, id=status_id)
+        user.delete()
+        messages.add_message(request, messages.INFO, _("Status successfully deleted"))
+
+        return redirect("statuses.index")
 
 
-class UpdateView(View):
+class UpdateView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         status_id = kwargs.get("pk")
         user = Status.objects.get(id=status_id)
