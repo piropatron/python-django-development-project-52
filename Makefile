@@ -5,9 +5,12 @@ build:
 	./build.sh
 
 .PHONY: render-start
-render-start:
+render-start: build gunicorn-start
+
+.PHONY: gunicorn-start
+gunicorn-start:
 	gunicorn task_manager.wsgi
-	
+
 .PHONY: test
 test:
 	uv run pytest
