@@ -42,7 +42,7 @@ class CreateViewTest(TestCase):
         # Check success message
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
-        self.assertEqual(str(messages[0]), 'The user has been successfully registered.')
+        self.assertEqual(str(messages[0]), 'Пользователь успешно зарегистрирован.')
 
     def test_create_view_post_invalid_data_renders_form_with_errors(self):
         invalid_data = {
@@ -75,7 +75,7 @@ class UpdateViewTest(TestCase):
         self.assertRedirects(response, reverse('users.index'))
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
-        self.assertEqual(str(messages[0]), 'You do not have permission to make changes.')
+        self.assertEqual(str(messages[0]), 'У вас нет прав для изменения')
 
     def test_update_view_get_for_own_user_returns_200_and_uses_correct_template(self):
         self.client.login(username='testuser', password='oldpass')
@@ -99,7 +99,7 @@ class UpdateViewTest(TestCase):
         self.assertEqual(self.user.last_name, 'User')
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
-        self.assertEqual(str(messages[0]), 'User successfully modified')
+        self.assertEqual(str(messages[0]), 'Пользователь успешно изменен')
 
     def test_update_view_post_invalid_data_renders_form_with_errors(self):
         self.client.login(username='testuser', password='oldpass')
@@ -138,7 +138,7 @@ class DeleteViewTest(TestCase):
         self.assertFalse(User.objects.filter(pk=self.user.pk).exists())
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
-        self.assertEqual(str(messages[0]), 'User successfully deleted')
+        self.assertEqual(str(messages[0]), 'Пользователь успешно удален')
 
     def test_delete_view_post_can_delete_other_user(self):
         # The view allows deletion of any user when logged in (no ownership check)
