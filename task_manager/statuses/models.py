@@ -23,3 +23,7 @@ class Status(TimestampedModel):
         unique=True,
         verbose_name=_('Name')
     )
+
+    class Meta:
+        verbose_name = _('Status')
+        verbose_name_plural = _('Statuses')

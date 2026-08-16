@@ -40,11 +40,11 @@ run:
 
 .PHONY: makemessages
 makemessages:
-	uv run django-admin makemessages -l ru_RU
+	@$(MANAGE) makemessages --locale ru_RU
 
 .PHONY: compilemessages
 compilemessages:
-	uv run django-admin compilemessages 
+	@$(MANAGE) compilemessages
 
 .PHONY: lint
 lint:
