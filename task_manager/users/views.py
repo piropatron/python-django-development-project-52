@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.views import View
-from .forms import UserForm, UserChangeForm
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.translation import gettext_lazy as _
+from django.views import View
+
+from .forms import UserChangeForm, UserForm
 
 
 class IndexView(View):
@@ -35,7 +36,7 @@ class CreateView(View):
         if form.is_valid():  # Если данные корректные, то сохраняем данные формы
             form.save()
             messages.add_message(request, messages.INFO, _('The user has been successfully registered.'))
-            return redirect('home')  # Редирект на указанный маршрут
+            return redirect('login')  # Редирект на указанный маршрут
         # Если данные некорректные, то возвращаем человека обратно на страницу с заполненной формой
         return render(request, 'users/create.html', {'form': form})
 

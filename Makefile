@@ -43,4 +43,8 @@ compilemessages:
 lint:
 	uv run ruff check task_manager
 
+.PHONY: lint-fix
+lint-fix:
+	uv run ruff check task_manager --fix
+
 
