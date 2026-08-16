@@ -1,12 +1,12 @@
 from django import forms
-from django.contrib.auth.forms import SetPasswordMixin, UserCreationForm
 from django.contrib.auth import password_validation
+from django.contrib.auth.forms import SetPasswordMixin, UserCreationForm
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 
 
 class UserForm(UserCreationForm):
-    #password1, password2 = SetPasswordMixin.create_password_fields()
+    # password1, password2 = SetPasswordMixin.create_password_fields()
 
     class Meta:
         model = User
