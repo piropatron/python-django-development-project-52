@@ -19,10 +19,6 @@ setup: db-clean install migrate
 install:
 	@uv sync
 
-.PHONY: db-clean
-db-clean:
-	@rm db.sqlite3 || true
-
 .PHONY: migrate
 migrate:
 	@$(MANAGE) migrate
@@ -35,7 +31,16 @@ shell:
 run:
 	uv run manage.py runserver
 
+.PHONY: makemessages
+makemessages:
+	uv run django-admin makemessages -a
+
+.PHONY: compilemessages
+compilemessages:
+	uv run django-admin compilemessages 
+
 .PHONY: lint
 lint:
 	uv run ruff check task_manager
+
 
