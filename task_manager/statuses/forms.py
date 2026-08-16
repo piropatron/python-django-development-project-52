@@ -9,3 +9,7 @@ class StatusCreateForm(forms.ModelForm):
         fields = [
             "name",
         ]
+
+
+class StatusChangeForm(StatusCreateForm):
+    pass

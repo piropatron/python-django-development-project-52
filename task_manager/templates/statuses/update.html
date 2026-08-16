@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block title %}{% translate 'Update status' %}{% endblock %}
+
+{% block content %}
+<h2>{% trans 'Update status' %}</h2>
+
+<form method="post" action="{% url 'statuses.update' status_id %}" class="form">
+    {% csrf_token %}
+
+    {% bootstrap_form form %}
+
+    {% bootstrap_button button_type="submit" content=_('Save') %}
+</form>
+{% endblock %}

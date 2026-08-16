@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-17 01:12+0300\n"
+"POT-Creation-Date: 2026-08-17 01:16+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,9 +23,9 @@ msgstr "Имя"
 
 #: task_manager/statuses/views.py:37
 #, fuzzy
-#| msgid "User successfully deleted"
-msgid "Status successfully created."
-msgstr "Статус успешно создан."
+#| msgid "Status successfully created"
+msgid "Status successfully created"
+msgstr "Статус успешно создан"
 
 #: task_manager/templates/auth/user_update_form.html:5
 #: task_manager/templates/users/create.html:5
@@ -39,7 +39,7 @@ msgstr "Вход"
 #: task_manager/templates/auth/user_update_form.html:13
 #: task_manager/templates/users/update.html:13
 msgid "Save"
-msgstr ""
+msgstr "Сохранить"
 
 #: task_manager/templates/index.html:8
 msgid "Hello from Hexlet"
