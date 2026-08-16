@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block title %}{% translate 'Users' %}{% endblock %}
+
+{% block content %}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">{% translate 'ID' %}</th>
+        <th scope="col">{% translate 'first name' %}</th>
+        <!--      <th scope="col">{% translate 'last name' %}</th>-->
+        <th scope="col">{% translate 'date joined' %}</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for siteUser in users %}
+    <tr>
+        <th scope="row">{{ siteUser.pk }}</th>
+        <td>{{ siteUser.first_name }}</td>
+        <td>{{ siteUser.date_joined }}</td>
+        <!--      <td>{{ user.username }}</td>-->
+        <td>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <a href="{% url 'users.update' siteUser.id %}">{% translate 'edit' %}</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{% url 'users.delete' siteUser.id %}">{% translate 'delete' %}</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
+

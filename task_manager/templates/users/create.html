@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block title %}{% translate 'Login' %}{% endblock %}
+
+{% block content %}
+<form method="post" action="{% url 'users.create' %}" class="form">
+        {% csrf_token %}
+
+        {% bootstrap_form form %}
+
+        {% bootstrap_button button_type="submit" content=_('Login') %}
+    </form>
+{% endblock %}

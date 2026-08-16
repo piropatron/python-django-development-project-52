@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block title %}{% translate 'Login' %}{% endblock %}
+
+{% block content %}
+<div>
+    {% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+        please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+    {% endif %}
+
+    <p>
+    <h2>{% translate 'Login' %}</h2>
+    </p>
+
+    <form method="post" action="{% url 'login' %}" class="form">
+        {% csrf_token %}
+
+        {% bootstrap_form form %}
+
+        {% bootstrap_button button_type="submit" content=_('Login') %}
+    </form>
+</div>
+{% endblock %}

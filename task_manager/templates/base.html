@@ -1,6 +1,7 @@
 <!doctype html>
 {% load django_bootstrap5 %}
 {% load i18n %}
+{% load static %}
 {% get_current_language as LANGUAGE_CODE %}
 <html lang="{{ LANGUAGE_CODE }}">
   <head>
@@ -36,7 +37,7 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="navbar-top-fixed.css" rel="stylesheet">
+    <link href="{% static 'css/navbar-top-fixed.css' %}" rel="stylesheet">
   </head>
   <body>
 
@@ -49,13 +50,13 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Пользователи</a>
+          <a class="nav-link active" href="{% url 'users.index' %}">Пользователи</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Вход</a>
+          <a class="nav-link" href="{% url 'login' %}">Вход</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Регистрация</a>
+          <a class="nav-link" href="{% url 'users.create' %}">Регистрация</a>
         </li>
       </ul>
     </div>

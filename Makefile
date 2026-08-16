@@ -33,7 +33,7 @@ run:
 
 .PHONY: makemessages
 makemessages:
-	uv run django-admin makemessages -a
+	uv run django-admin makemessages -l ru_RU
 
 .PHONY: compilemessages
 compilemessages:
