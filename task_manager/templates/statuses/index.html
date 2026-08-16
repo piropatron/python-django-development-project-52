@@ -2,33 +2,39 @@
 {% load i18n %}
 {% load django_bootstrap5 %}
 
-{% block title %}{% translate 'Users' %}{% endblock %}
+{% block title %}{% translate 'Statuses' %}{% endblock %}
 
 {% block content %}
+<div>
+<h2>{% translate 'Statuses' %}</h2>
+    <p>
+        <a href="{% url 'statuses.create' %}" class="btn btn-primary">{% translate 'Create status' %}</a>
+    </p>
 
-<table class="table">
+    <table class="table">
     <thead>
     <tr>
         <th scope="col">{% translate 'ID' %}</th>
         <th scope="col">{% translate 'first name' %}</th>
+        <!--      <th scope="col">{% translate 'last name' %}</th>-->
         <th scope="col">{% translate 'date joined' %}</th>
         <th scope="col"></th>
     </tr>
     </thead>
     <tbody>
-    {% for siteUser in users %}
+    {% for status in statuses %}
     <tr>
-        <th scope="row">{{ siteUser.pk }}</th>
-        <td>{{ siteUser.first_name }}</td>
-        <td>{{ siteUser.date_joined }}</td>
+        <th scope="row">{{ status.pk }}</th>
+        <td>{{ status.name }}</td>
+        <td>{{ status.created_at }}</td>
         <!--      <td>{{ user.username }}</td>-->
         <td>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                  <a href="{% url 'users.update' siteUser.id %}">{% translate 'edit' %}</a>
+                  <a href="{% url 'statuses.update' status.id %}">{% translate 'edit' %}</a>
                 </li>
                 <li class="list-group-item">
-                    <a href="{% url 'users.delete' siteUser.id %}">{% translate 'delete' %}</a>
+                    <a href="{% url 'statuses.delete' status.id %}">{% translate 'delete' %}</a>
                 </li>
             </ul>
         </td>
@@ -37,5 +43,6 @@
     </tbody>
 </table>
 
-{% endblock %}
 
+</div>
+{% endblock %}

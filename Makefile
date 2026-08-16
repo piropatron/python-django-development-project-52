@@ -30,6 +30,10 @@ migrate:
 shell:
 	@$(MANAGE) shell_plus --ipython
 
+.PHONY: collectstatic
+collectstatic:
+	@$(MANAGE) collectstatic
+
 .PHONY: run
 run:
 	uv run manage.py runserver
