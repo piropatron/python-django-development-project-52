@@ -1,17 +1,7 @@
-from cProfile import label
-
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-# Create your models here.
-class TimestampedModel(models.Model):
-    """An abstract model with a pair of timestamps."""
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        abstract = True
+from task_manager.models import TimestampedModel
 
 
 class Status(TimestampedModel):
@@ -27,3 +17,6 @@ class Status(TimestampedModel):
     class Meta:
         verbose_name = _('Status')
         verbose_name_plural = _('Statuses')
+
+    def __str__(self):
+        return self.name

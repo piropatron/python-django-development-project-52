@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-17 17:11+0000\n"
+"POT-Creation-Date: 2026-08-17 18:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: task_manager/statuses/models.py:24
+#: task_manager/statuses/models.py:22
 msgid "Name"
 msgstr "Имя"
 
-#: task_manager/statuses/models.py:28
+#: task_manager/statuses/models.py:26
 msgid "Status"
 msgstr "Статус"
 
-#: task_manager/statuses/models.py:29
+#: task_manager/statuses/models.py:27
 #: task_manager/templates/statuses/index.html:5
 #: task_manager/templates/statuses/index.html:9
 msgid "Statuses"
@@ -42,6 +42,14 @@ msgstr "Статус успешно удален"
 #: task_manager/statuses/views.py:78
 msgid "Status successfully modified"
 msgstr "Статус успешно изменен"
+
+#: task_manager/tasks/models.py:18
+msgid "Task"
+msgstr "Задача"
+
+#: task_manager/tasks/models.py:19
+msgid "Tasks"
+msgstr "Задачи"
 
 #: task_manager/templates/auth/user_update_form.html:5
 #: task_manager/templates/users/create.html:5
@@ -159,8 +167,8 @@ msgstr "Пользователь успешно изменен"
 msgid "User successfully deleted"
 msgstr "Пользователь успешно удален"
 
-msgid "last name"
-msgstr "Фамилия"
+#~ msgid "last name"
+#~ msgstr "Фамилия"
 
 #~ msgid "Navbar example."
 #~ msgstr "Пример"

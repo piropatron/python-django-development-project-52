@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block title %}{% translate 'Tasks' %}{% endblock %}
+
+{% block content %}
+<div>
+<h2>{% translate 'Tasks' %}</h2>
+    <p>
+        <a href="{% url 'tasks.create' %}" class="btn btn-primary">{% translate 'Create task' %}</a>
+    </p>
+
+    <table class="table">
+    <thead>
+    <tr>
+        <th scope="col">{% translate 'ID' %}</th>
+        <th scope="col">{% translate 'name' %}</th>
+        <th scope="col">{% translate 'status' %}</th>
+        <th scope="col">{% translate 'autor' %}</th>
+        <th scope="col">{% translate 'executor' %}</th>
+        <th scope="col">{% translate 'created at' %}</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for status in tasks_list %}
+    <tr>
+        <th scope="row">{{ status.pk }}</th>
+        <td>{{ status.name }}</td>
+        <td>{{ status.status.name }}</td>
+        <td>{{ status.autor.username }}</td>
+        <td>{{ status.executor.username }}</td>
+        <td>{{ status.created_at }}</td>
+        <td>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <a href="{% url 'statuses.update' status.id %}">{% translate 'edit' %}</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{% url 'statuses.delete' status.id %}">{% translate 'delete' %}</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+
+
+{% endblock %}

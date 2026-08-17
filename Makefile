@@ -32,11 +32,15 @@ shell:
 
 .PHONY: collectstatic
 collectstatic:
-	@$(MANAGE) collectstatic
+	@$(MANAGE) collectstatic --noinput
 
 .PHONY: run
 run:
 	uv run manage.py runserver
+
+.PHONY: makemigrations
+makemigrations:
+	@$(MANAGE) makemigrations
 
 .PHONY: makemessages
 makemessages:

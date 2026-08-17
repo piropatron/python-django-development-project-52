@@ -1,0 +1,54 @@
+from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render, redirect
+from django.views import generic
+from django.views import View
+from .models import Task
+
+from django.utils.translation import gettext_lazy as _
+from .forms import TaskCreateForm
+
+
+# Create your views here.
+class CreateView(View):
+    def get(self, request, *args, **kwargs):
+        form = TaskCreateForm()
+        return render(
+            request,
+            "tasks/create.html",
+            context={
+                "form": form,
+            },
+        )
+
+    def post(self, request, *args, **kwargs):
+        form = TaskCreateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.INFO, _('Task successfully created'))
+            return redirect('tasks.index')
+
+        return render(request, 'tasks/create.html', {'form': form})
+
+
+
+class DeleteView(View):
+    pass
+
+
+class IndexView(LoginRequiredMixin, generic.ListView):
+    template_name = "tasks/index.html"
+    context_object_name = "tasks_list"
+
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return Task.objects.order_by("-name")[:5]
+
+
+class UpdateView(View):
+    pass
+
+
+class DetailView(generic.DetailView):
+    model = Task
+    template_name = "tasks/detail.html"

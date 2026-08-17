@@ -50,19 +50,20 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="{% url 'users.index' %}">Пользователи</a>
+                    <a class="nav-link active" href="{% url 'users.index' %}">{% trans 'Users' %}</a>
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'statuses.index' %}">Статусы</a>
-                </li>
-                {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Вход</a>
+                    <a class="nav-link" href="{% url 'statuses.index' %}">{% trans 'Statuses' %}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'users.create' %}">Регистрация</a>
+                    <a class="nav-link" href="{% url 'tags.index' %}">{% trans 'Tags' %}</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'tasks.index' %}">{% trans 'Tasks' %}</a>
+                </li>
+
+
                 {% endif %}
             </ul>
             {% if user.is_authenticated %}
@@ -70,6 +71,18 @@
                 {% csrf_token %}
                 <button class="btn btn-outline-success" type="submit">Выход</button>
             </form>
+            {% else %}
+            <div class="d-flex navbar-nav mb-2 mb-md-0">
+
+
+            <p class="nav-item mb-1">
+                    <a class="nav-link link-light" href="{% url 'login' %}">{% trans 'Login' %}</a>
+                </p>
+                <p class="nav-item mb-1">
+                    <a class="nav-link link-light" href="{% url 'users.create' %}">Регистрация</a>
+                </p>
+                </fiv>
+
             {% endif %}
         </div>
     </div>
