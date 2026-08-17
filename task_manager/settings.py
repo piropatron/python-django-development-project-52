@@ -133,8 +133,10 @@ LOCALE_PATHS= [
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "task_manager/static",
+
 ]
+
+STATIC_ROOT = BASE_DIR / 'public'
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration

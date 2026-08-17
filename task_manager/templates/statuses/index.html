@@ -16,8 +16,7 @@
     <tr>
         <th scope="col">{% translate 'ID' %}</th>
         <th scope="col">{% translate 'first name' %}</th>
-        <!--      <th scope="col">{% translate 'last name' %}</th>-->
-        <th scope="col">{% translate 'date joined' %}</th>
+        <th scope="col">{% translate 'created at' %}</th>
         <th scope="col"></th>
     </tr>
     </thead>
@@ -27,7 +26,6 @@
         <th scope="row">{{ status.pk }}</th>
         <td>{{ status.name }}</td>
         <td>{{ status.created_at }}</td>
-        <!--      <td>{{ user.username }}</td>-->
         <td>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">

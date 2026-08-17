@@ -71,13 +71,11 @@
                 <button class="btn btn-outline-success" type="submit">Выход</button>
             </form>
             {% endif %}
-
-
         </div>
     </div>
 </nav>
-{% bootstrap_messages %}
 <main class="container">
+    {% bootstrap_messages %}
     {% block content %} {% endblock %}
     {% bootstrap_javascript %}
 </main>
