@@ -1,12 +1,13 @@
 from django.contrib import messages
-from django.shortcuts import render, redirect, get_object_or_404
-from django.views import View
-from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import get_object_or_404, redirect, render
+from django.utils.translation import gettext_lazy as _
+from django.views import View
+
+from .forms import TagChangeForm, TagCreateForm
 
 # Create your views here.
 from .models import Tag
-from .forms import TagCreateForm, TagChangeForm
 
 
 # Create your views here.
@@ -32,6 +33,7 @@ class CreateView(LoginRequiredMixin, View):
                 "form": form,
             },
         )
+
     def post(self, request, *args, **kwargs):
         form = TagCreateForm(request.POST)
         if form.is_valid():
@@ -40,7 +42,6 @@ class CreateView(LoginRequiredMixin, View):
             return redirect('tags.index')
 
         return render(request, 'tags/create.html', {'form': form})
-
 
 
 class DeleteView(LoginRequiredMixin, View):

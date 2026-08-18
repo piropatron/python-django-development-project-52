@@ -1,12 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect
-from django.views import generic
-from django.views import View
-from .models import Task
-
+from django.shortcuts import redirect, render
 from django.utils.translation import gettext_lazy as _
+from django.views import View, generic
+
 from .forms import TaskCreateForm
+from .models import Task
 
 
 # Create your views here.
@@ -31,7 +30,6 @@ class CreateView(View):
             return redirect('tasks.index')
 
         return render(request, 'tasks/create.html', {'form': form})
-
 
 
 class DeleteView(View):

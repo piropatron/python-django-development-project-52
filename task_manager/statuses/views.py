@@ -1,12 +1,11 @@
 from django.contrib import messages
-from django.shortcuts import render, redirect, get_object_or_404
-from django.views import View
-from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import get_object_or_404, redirect, render
+from django.utils.translation import gettext_lazy as _
+from django.views import View
 
-
+from .forms import StatusChangeForm, StatusCreateForm
 from .models import Status
-from .forms import StatusCreateForm, StatusChangeForm
 
 
 # Create your views here.
@@ -32,6 +31,7 @@ class CreateView(LoginRequiredMixin, View):
                 "form": form,
             },
         )
+
     def post(self, request, *args, **kwargs):
         form = StatusCreateForm(request.POST)
         if form.is_valid():
@@ -40,7 +40,6 @@ class CreateView(LoginRequiredMixin, View):
             return redirect('statuses.index')
 
         return render(request, 'statuses/create.html', {'form': form})
-
 
 
 class DeleteView(LoginRequiredMixin, View):

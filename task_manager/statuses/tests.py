@@ -1,8 +1,7 @@
-from django.test import TestCase
+from django.contrib.auth.models import User
 
 # Create your tests here.
 from django.contrib.messages import get_messages
-from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
 
