@@ -63,8 +63,8 @@ class DeleteView(LoginRequiredMixin, View):
 class UpdateView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         status_id = kwargs.get("pk")
-        user = Status.objects.get(id=status_id)
-        form = StatusChangeForm(instance=user)
+        status = Status.objects.get(id=status_id)
+        form = StatusChangeForm(instance=status)
         return render(
             request, "statuses/update.html", {"form": form, "status_id": status_id}
         )

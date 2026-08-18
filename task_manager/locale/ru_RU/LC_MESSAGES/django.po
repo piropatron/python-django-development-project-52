@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-17 18:25+0000\n"
+"POT-Creation-Date: 2026-08-18 20:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: task_manager/statuses/models.py:22
+#: task_manager/models.py:8
+msgid "Created at"
+msgstr ""
+
+#: task_manager/models.py:9
+msgid "Updated at"
+msgstr ""
+
+#: task_manager/statuses/models.py:14 task_manager/tasks/models.py:13
 msgid "Name"
 msgstr "Имя"
 
-#: task_manager/statuses/models.py:26
+#: task_manager/statuses/models.py:18 task_manager/tasks/models.py:15
 msgid "Status"
 msgstr "Статус"
 
-#: task_manager/statuses/models.py:27
+#: task_manager/statuses/models.py:19 task_manager/templates/base.html:57
 #: task_manager/templates/statuses/index.html:5
 #: task_manager/templates/statuses/index.html:9
 msgid "Statuses"
@@ -43,15 +51,50 @@ msgstr "Статус успешно удален"
 msgid "Status successfully modified"
 msgstr "Статус успешно изменен"
 
-#: task_manager/tasks/models.py:18
+#: task_manager/tags/views.py:39
+msgid "Tag successfully created"
+msgstr "Метка успешно создана"
+
+#: task_manager/tags/views.py:58
+msgid "Tag successfully deleted"
+msgstr "Метка успешно удалена"
+
+#: task_manager/tags/views.py:78
+msgid "Tag successfully modified"
+msgstr "Метка успешно изменена"
+
+#: task_manager/tasks/models.py:14
+msgid "Description"
+msgstr "Описание"
+
+#: task_manager/tasks/models.py:16
+msgid "Author"
+msgstr "Автор"
+
+#: task_manager/tasks/models.py:17
+msgid "Executor"
+msgstr "Executor"
+
+#: task_manager/tasks/models.py:21
 msgid "Task"
 msgstr "Задача"
 
-#: task_manager/tasks/models.py:19
+#: task_manager/tasks/models.py:22 task_manager/templates/base.html:63
+#: task_manager/templates/tasks/index.html:5
+#: task_manager/templates/tasks/index.html:9
 msgid "Tasks"
 msgstr "Задачи"
 
+#: task_manager/tasks/views.py:30
+msgid "Task successfully created"
+msgstr "Задача успешно создана"
+
+#: task_manager/tasks/views.py:70
+msgid "Task successfully updated"
+msgstr "Задача успешно обновлена"
+
 #: task_manager/templates/auth/user_update_form.html:5
+#: task_manager/templates/base.html:79
 #: task_manager/templates/users/create.html:5
 #: task_manager/templates/users/create.html:13
 #: task_manager/templates/users/login.html:5
@@ -62,9 +105,21 @@ msgstr "Вход"
 
 #: task_manager/templates/auth/user_update_form.html:13
 #: task_manager/templates/statuses/update.html:15
+#: task_manager/templates/tags/update.html:15
+#: task_manager/templates/tasks/update.html:15
 #: task_manager/templates/users/update.html:13
 msgid "Save"
 msgstr "Сохранить"
+
+#: task_manager/templates/base.html:53
+#: task_manager/templates/users/index.html:5
+msgid "Users"
+msgstr "Пользователи"
+
+#: task_manager/templates/base.html:60 task_manager/templates/tags/index.html:5
+#: task_manager/templates/tags/index.html:9
+msgid "Tags"
+msgstr "Теги"
 
 #: task_manager/templates/index.html:8
 msgid "Hello from Hexlet"
@@ -85,6 +140,8 @@ msgid "Create status"
 msgstr "Создать статус"
 
 #: task_manager/templates/statuses/create.html:15
+#: task_manager/templates/tags/create.html:15
+#: task_manager/templates/tasks/create.html:15
 msgid "Create"
 msgstr "Создать"
 
@@ -94,11 +151,14 @@ msgid "Delete user"
 msgstr "Удалить пользователя"
 
 #: task_manager/templates/statuses/delete.html:12
+#: task_manager/templates/tags/delete.html:12
 #: task_manager/templates/users/delete.html:12
 msgid "Delete"
 msgstr "Удалить"
 
 #: task_manager/templates/statuses/index.html:17
+#: task_manager/templates/tags/index.html:17
+#: task_manager/templates/tasks/index.html:17
 #: task_manager/templates/users/index.html:12
 msgid "ID"
 msgstr "ID"
@@ -109,27 +169,83 @@ msgid "first name"
 msgstr "Имя"
 
 #: task_manager/templates/statuses/index.html:19
+#: task_manager/templates/tags/index.html:19
+#: task_manager/templates/tasks/detail.html:48
+#: task_manager/templates/tasks/index.html:22
 msgid "created at"
 msgstr "дата создания"
 
 #: task_manager/templates/statuses/index.html:32
+#: task_manager/templates/tags/index.html:32
+#: task_manager/templates/tasks/detail.html:66
+#: task_manager/templates/tasks/index.html:38
 #: task_manager/templates/users/index.html:28
 msgid "edit"
 msgstr "изменить"
 
 #: task_manager/templates/statuses/index.html:35
+#: task_manager/templates/tags/index.html:35
+#: task_manager/templates/tasks/detail.html:69
+#: task_manager/templates/tasks/index.html:41
 #: task_manager/templates/users/index.html:31
 msgid "delete"
 msgstr "удалить"
 
 #: task_manager/templates/statuses/update.html:5
 #: task_manager/templates/statuses/update.html:8
+#: task_manager/templates/tags/update.html:5
+#: task_manager/templates/tags/update.html:8
 msgid "Update status"
 msgstr "Обновить статус"
 
-#: task_manager/templates/users/index.html:5
-msgid "Users"
-msgstr "Пользователи"
+#: task_manager/templates/tags/create.html:5
+#: task_manager/templates/tags/create.html:8
+#: task_manager/templates/tags/index.html:11
+msgid "Create tag"
+msgstr "Создать тег"
+
+#: task_manager/templates/tags/delete.html:5
+msgid "Delete tag"
+msgstr "Удалить тег"
+
+#: task_manager/templates/tags/index.html:18
+#: task_manager/templates/tasks/index.html:18
+msgid "name"
+msgstr "имя"
+
+#: task_manager/templates/tasks/create.html:5
+#: task_manager/templates/tasks/create.html:8
+#: task_manager/templates/tasks/index.html:11
+msgid "Create task"
+msgstr "Создать задачу"
+
+#: task_manager/templates/tasks/detail.html:8
+msgid "Task detail"
+msgstr "Просмотр задачи"
+
+#: task_manager/templates/tasks/detail.html:23
+#: task_manager/templates/tasks/index.html:20
+msgid "author"
+msgstr "автор"
+
+#: task_manager/templates/tasks/detail.html:32
+#: task_manager/templates/tasks/index.html:21
+msgid "executor"
+msgstr "исполнитель"
+
+#: task_manager/templates/tasks/detail.html:40
+#: task_manager/templates/tasks/index.html:19
+msgid "status"
+msgstr "статус"
+
+#: task_manager/templates/tasks/detail.html:56
+msgid "tags"
+msgstr "метки"
+
+#: task_manager/templates/tasks/update.html:5
+#: task_manager/templates/tasks/update.html:8
+msgid "Update task"
+msgstr "Редактировать задачу"
 
 #: task_manager/templates/users/index.html:14
 msgid "date joined"

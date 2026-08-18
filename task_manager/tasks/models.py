@@ -10,7 +10,7 @@ from task_manager.tags.models import Tag
 
 # Create your models here.
 class Task(TimestampedModel, models.Model):
-    name = models.CharField(max_length=200, verbose_name=_('Name'))
+    name = models.CharField(max_length=200, verbose_name=_('Name'), unique=True)
     description = models.TextField(verbose_name=_('Description'))
     status = models.ForeignKey(Status, on_delete=models.CASCADE, verbose_name=_('Status'))
     author  = models.ForeignKey(User, on_delete=models.CASCADE, related_name='created_tasks', verbose_name=_('Author'))
