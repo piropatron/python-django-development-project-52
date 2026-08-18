@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 from task_manager.models import TimestampedModel
 from task_manager.statuses.models import Status
-from task_manager.tags.models import Tag
+from task_manager.labels.models import Label
 
 
 # Create your models here.
@@ -14,7 +14,7 @@ class Task(TimestampedModel, models.Model):
     status = models.ForeignKey(Status, on_delete=models.CASCADE, verbose_name=_('Status'))
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='created_tasks', verbose_name=_('Author'))
     executor = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='my_tasks', verbose_name=_('Executor'))
-    tags = models.ManyToManyField(Tag)
+    labels = models.ManyToManyField(Label, related_name='tasks')
 
     class Meta:
         verbose_name = _('Task')

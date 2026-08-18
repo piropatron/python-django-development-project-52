@@ -5,7 +5,7 @@
 {% block title %}{{ model.name }}{% endblock %}
 
 {% block content %}
-<h2 class="my-4" >{% trans 'Task detail' %}</h2>
+<h2 class="my-4">{% trans 'Task detail' %}</h2>
 <div class="card">
     <div class="card-header text-bg-secondary">
         {{ task.name }}
@@ -53,10 +53,10 @@
             </div>
             <div class="row">
                 <div class="col-6">
-                    <p>{% trans 'tags' %}</p>
+                    <p>{% trans 'labels' %}</p>
                     <ul>
-                        {%  for tag in task.tags.all  %}
-                        <li>{{tag.name}}</li>
+                        {% for label in task.labels.all %}
+                        <li>{{label.name}}</li>
                         {% endfor %}
                     </ul>
                 </div>

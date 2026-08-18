@@ -2,11 +2,11 @@
 {% load i18n %}
 {% load django_bootstrap5 %}
 
-{% block title %}{% translate 'Tasks' %}{% endblock %}
+{% block title %}{% translate 'tasks'|capfirst %}{% endblock %}
 
 {% block content %}
 <div>
-<h2>{% translate 'Tasks' %}</h2>
+<h2>{% translate 'tasks'|capfirst %}</h2>
     <p>
         <a href="{% url 'tasks.create' %}" class="btn btn-primary">{% translate 'Create task' %}</a>
     </p>

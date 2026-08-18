@@ -7,7 +7,7 @@
 {% block content %}
 <h2>{% trans 'Create tag' %}</h2>
 
-<form method="post" action="{% url 'tags.create' %}" class="form">
+<form method="post" action="{% url 'labels.create' %}" class="form">
     {% csrf_token %}
 
     {% bootstrap_form form %}

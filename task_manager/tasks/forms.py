@@ -12,6 +12,6 @@ class TaskCreateForm(forms.ModelForm):
             'status',
             'author',
             'executor',
-            'tags',
+            'labels',
         ]
         exclude = ['author']

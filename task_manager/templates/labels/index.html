@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block title %}{% translate 'labels'|capfirst %}{% endblock %}
+
+{% block content %}
+<div>
+<h2>{% translate 'labels'|capfirst %}</h2>
+    <p>
+        <a href="{% url 'labels.create' %}" class="btn btn-primary">{% translate 'Create tag' %}</a>
+    </p>
+
+    <table class="table">
+    <thead>
+    <tr>
+        <th scope="col">{% translate 'ID' %}</th>
+        <th scope="col">{% translate 'name'|capfirst %}</th>
+        <th scope="col">{% translate 'created at'|capfirst %}</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for label in labels %}
+    <tr>
+        <th scope="row">{{ label.pk }}</th>
+        <td>{{ label.name }}</td>
+        <td>{{ label.created_at }}</td>
+        <td>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <a href="{% url 'labels.update' label.id %}">{% translate 'edit' %}</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{% url 'labels.delete' label.id %}">{% translate 'delete' %}</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+</div>
+{% endblock %}
