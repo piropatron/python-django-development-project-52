@@ -1,9 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.paginator import Paginator
 from django.shortcuts import redirect, render
 from django.utils.translation import gettext_lazy as _
 from django.views import View, generic
 
+from .filters import TaskFilter
 from .forms import TaskCreateForm
 from .models import Task
 
@@ -36,13 +38,22 @@ class DeleteView(View):
     pass
 
 
-class IndexView(LoginRequiredMixin, generic.ListView):
-    template_name = "tasks/index.html"
-    context_object_name = "tasks_list"
+class IndexView(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        filter = TaskFilter(request.GET, request=request, queryset=Task.objects.all())
+        tasks = filter.qs
+        paginator = Paginator(tasks, 2)  # 10 задач на страницу
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
 
-    def get_queryset(self):
-        """Return the last five published questions."""
-        return Task.objects.order_by("-name")[:5]
+        return render(
+            request,
+            "tasks/index.html",
+            context={
+                "tasks_list": page_obj,
+                'filter': filter
+            },
+        )
 
 
 class UpdateView(View):
