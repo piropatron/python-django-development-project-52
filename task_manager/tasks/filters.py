@@ -35,6 +35,7 @@ class TaskFilter(django_filters.FilterSet):
         if value:
             # Получаем текущего пользователя из запроса
             user = self.request.user
+
             if user and user.is_authenticated:
                 return queryset.filter(author=user)
         return queryset
