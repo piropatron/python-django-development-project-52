@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-20 20:51+0000\n"
+"POT-Creation-Date: 2026-08-20 22:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -92,13 +92,21 @@ msgstr "Задача"
 msgid "Tasks"
 msgstr "Задачи"
 
-#: task_manager/tasks/views.py:31
+#: task_manager/tasks/tests.py:93 task_manager/tasks/views.py:31
 msgid "Task successfully created"
 msgstr "Задача успешно создана"
 
-#: task_manager/tasks/views.py:79
+#: task_manager/tasks/tests.py:133 task_manager/tasks/views.py:96
 msgid "Task successfully updated"
 msgstr "Задача успешно обновлена"
+
+#: task_manager/tasks/tests.py:163 task_manager/tasks/views.py:53
+msgid "Task successfully deleted"
+msgstr "Задача успешно удалена"
+
+#: task_manager/tasks/views.py:49
+msgid "A task can only be deleted by its author."
+msgstr "Задачу может удалить только ее автор"
 
 #: task_manager/templates/auth/user_update_form.html:5
 #: task_manager/templates/base.html:79
@@ -169,6 +177,7 @@ msgstr ""
 
 #: task_manager/templates/labels/delete.html:12
 #: task_manager/templates/statuses/delete.html:12
+#: task_manager/templates/tasks/delete.html:12
 #: task_manager/templates/users/delete.html:12
 msgid "Delete"
 msgstr "Да, удалить"
@@ -235,6 +244,10 @@ msgstr "Имя"
 #: task_manager/templates/tasks/index.html:11
 msgid "Create task"
 msgstr "Создать задачу"
+
+#: task_manager/templates/tasks/delete.html:5
+msgid "Delete task"
+msgstr "Удалить задачу"
 
 #: task_manager/templates/tasks/detail.html:8
 msgid "Task detail"
@@ -307,3 +320,6 @@ msgstr "Пользователь успешно изменен"
 #: task_manager/users/views.py:84
 msgid "User successfully deleted"
 msgstr "Пользователь успешно удален"
+
+#~ msgid "Task label"
+#~ msgstr "Метка"

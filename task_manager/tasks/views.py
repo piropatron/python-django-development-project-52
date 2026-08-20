@@ -44,8 +44,12 @@ class DeleteView(View):
 
     def post(self, request, *args, **kwargs):
         status_id = kwargs.get("pk")
-        user = get_object_or_404(Task, id=status_id)
-        user.delete()
+        task = get_object_or_404(Task, id=status_id)
+        if task.author is not request.user:
+            messages.add_message(request, messages.INFO, _('A task can only be deleted by its author.'))
+            return redirect('tasks.index')
+
+        task.delete()
         messages.add_message(request, messages.INFO, _("Task successfully deleted"))
 
         return redirect("tasks.index")
