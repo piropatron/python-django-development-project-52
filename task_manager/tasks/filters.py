@@ -1,11 +1,9 @@
 import django_filters
 from django import forms
+from django.utils.translation import gettext_lazy as _
 
 from task_manager.labels.models import Label
-from task_manager.statuses.models import Status
 from task_manager.tasks.models import Task
-
-from django.utils.translation import gettext_lazy as _
 
 
 class TaskFilter(django_filters.FilterSet):
@@ -13,10 +11,10 @@ class TaskFilter(django_filters.FilterSet):
         super().__init__(*args, **kwargs)
         self.request = kwargs.pop('request', None)
 
-
     labels = django_filters.ModelChoiceFilter(
         field_name='labels',
         queryset=Label.objects.all(),
+        label=_('Label'),
     )
     only_my_task = django_filters.BooleanFilter(
         method='filter_only_my_task',
@@ -24,12 +22,11 @@ class TaskFilter(django_filters.FilterSet):
         label=_('Only my task'),
     )
 
-
     class Meta:
         model = Task
         fields = {
             'status': ['exact'],
-            'author': ['exact'],
+            'executor': ['exact'],
             'labels': ['exact'],
         }
 

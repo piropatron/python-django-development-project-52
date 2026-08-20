@@ -42,7 +42,7 @@ class IndexView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         filter = TaskFilter(request.GET, request=request, queryset=Task.objects.all())
         tasks = filter.qs
-        paginator = Paginator(tasks, 2)  # 10 задач на страницу
+        paginator = Paginator(tasks, 10)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
 

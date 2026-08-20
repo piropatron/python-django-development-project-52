@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-18 21:14+0000\n"
+"POT-Creation-Date: 2026-08-20 20:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,22 +17,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: task_manager/labels/models.py:18 task_manager/statuses/models.py:14
+#: task_manager/labels/models.py:16 task_manager/statuses/models.py:14
 #: task_manager/tasks/models.py:12
 msgid "Name"
 msgstr "Имя"
 
 #: task_manager/labels/views.py:41
 msgid "Label successfully created"
-msgstr ""
+msgstr "Метка успешно создана"
 
 #: task_manager/labels/views.py:63
 msgid "Label successfully deleted"
-msgstr ""
+msgstr "Метка успешно удалена"
 
 #: task_manager/labels/views.py:83
 msgid "Label successfully modified"
-msgstr ""
+msgstr "Метка успешно изменена"
 
 #: task_manager/models.py:8
 msgid "Created at"
@@ -64,6 +64,14 @@ msgstr "Статус успешно удален"
 msgid "Status successfully modified"
 msgstr "Статус успешно изменен"
 
+#: task_manager/tasks/filters.py:17
+msgid "Label"
+msgstr "Метка"
+
+#: task_manager/tasks/filters.py:22
+msgid "Only my task"
+msgstr "Только свои задачи"
+
 #: task_manager/tasks/models.py:13
 msgid "Description"
 msgstr "Описание"
@@ -74,7 +82,7 @@ msgstr "Автор"
 
 #: task_manager/tasks/models.py:16
 msgid "Executor"
-msgstr "Executor"
+msgstr "Исполнитель"
 
 #: task_manager/tasks/models.py:20
 msgid "Task"
@@ -84,11 +92,11 @@ msgstr "Задача"
 msgid "Tasks"
 msgstr "Задачи"
 
-#: task_manager/tasks/views.py:29
+#: task_manager/tasks/views.py:31
 msgid "Task successfully created"
 msgstr "Задача успешно создана"
 
-#: task_manager/tasks/views.py:68
+#: task_manager/tasks/views.py:79
 msgid "Task successfully updated"
 msgstr "Задача успешно обновлена"
 
@@ -167,27 +175,27 @@ msgstr "Да, удалить"
 
 #: task_manager/templates/labels/index.html:17
 #: task_manager/templates/statuses/index.html:17
-#: task_manager/templates/tasks/index.html:17
+#: task_manager/templates/tasks/index.html:41
 #: task_manager/templates/users/index.html:12
 msgid "ID"
 msgstr "ID"
 
 #: task_manager/templates/labels/index.html:18
-#: task_manager/templates/tasks/index.html:18
+#: task_manager/templates/tasks/index.html:42
 msgid "name"
 msgstr "имя"
 
 #: task_manager/templates/labels/index.html:19
 #: task_manager/templates/statuses/index.html:19
 #: task_manager/templates/tasks/detail.html:48
-#: task_manager/templates/tasks/index.html:22
+#: task_manager/templates/tasks/index.html:46
 msgid "created at"
 msgstr "дата создания"
 
 #: task_manager/templates/labels/index.html:32
 #: task_manager/templates/statuses/index.html:32
 #: task_manager/templates/tasks/detail.html:66
-#: task_manager/templates/tasks/index.html:38
+#: task_manager/templates/tasks/index.html:62
 #: task_manager/templates/users/index.html:28
 msgid "edit"
 msgstr "изменить"
@@ -195,7 +203,7 @@ msgstr "изменить"
 #: task_manager/templates/labels/index.html:35
 #: task_manager/templates/statuses/index.html:35
 #: task_manager/templates/tasks/detail.html:69
-#: task_manager/templates/tasks/index.html:41
+#: task_manager/templates/tasks/index.html:65
 #: task_manager/templates/users/index.html:31
 msgid "delete"
 msgstr "удалить"
@@ -233,19 +241,23 @@ msgid "Task detail"
 msgstr "Просмотр задачи"
 
 #: task_manager/templates/tasks/detail.html:23
-#: task_manager/templates/tasks/index.html:20
+#: task_manager/templates/tasks/index.html:44
 msgid "author"
 msgstr "автор"
 
 #: task_manager/templates/tasks/detail.html:32
-#: task_manager/templates/tasks/index.html:21
+#: task_manager/templates/tasks/index.html:45
 msgid "executor"
 msgstr "исполнитель"
 
 #: task_manager/templates/tasks/detail.html:40
-#: task_manager/templates/tasks/index.html:19
+#: task_manager/templates/tasks/index.html:43
 msgid "status"
 msgstr "статус"
+
+#: task_manager/templates/tasks/index.html:32
+msgid "Show"
+msgstr "Показать"
 
 #: task_manager/templates/tasks/update.html:5
 #: task_manager/templates/tasks/update.html:8

@@ -1,9 +1,7 @@
 from django.db import models
-
-from task_manager.models import TimestampedModel
-
 from django.utils.translation import gettext_lazy as _
 
+from task_manager.models import TimestampedModel
 
 
 # Create your models here.
