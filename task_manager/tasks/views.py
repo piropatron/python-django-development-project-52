@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.utils.translation import gettext_lazy as _
 from django.views import View, generic
 
@@ -35,7 +35,20 @@ class CreateView(View):
 
 
 class DeleteView(View):
-    pass
+    def get(self, request, *args, **kwargs):
+        task_id = kwargs.get("pk")
+
+        return render(
+            request, "tasks/delete.html", {"task_id": task_id}
+        )
+
+    def post(self, request, *args, **kwargs):
+        status_id = kwargs.get("pk")
+        user = get_object_or_404(Task, id=status_id)
+        user.delete()
+        messages.add_message(request, messages.INFO, _("Task successfully deleted"))
+
+        return redirect("tasks.index")
 
 
 class IndexView(LoginRequiredMixin, View):

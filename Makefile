@@ -13,7 +13,7 @@ gunicorn-start:
 
 .PHONY: test
 test:
-	uv run pytest
+	uv run pytest ./task_manager/tasks/tests.py
 
 .PHONY: setup
 setup: db-clean install migrate

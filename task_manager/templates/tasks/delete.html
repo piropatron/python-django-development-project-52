@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load django_bootstrap5 %}
+
+{% block title %}{% translate 'Task label' %}{% endblock %}
+
+{% block content %}
+
+<form action="{% url 'tasks.delete' task_id %}" method="post">
+    {% csrf_token %}
+
+    {% bootstrap_button button_type="submit" content=_('Delete') %}
+</form>
+{% endblock %}

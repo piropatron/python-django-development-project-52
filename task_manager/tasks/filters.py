@@ -32,7 +32,6 @@ class TaskFilter(django_filters.FilterSet):
 
     def filter_only_my_task(self, queryset, name, value):
         # value — это True или False в зависимости от состояния чекбокса
-        print(self.request)
         if value:
             # Получаем текущего пользователя из запроса
             user = self.request.user
