@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load django_bootstrap5 %}
+
 
 {% block title %}{% translate 'Login' %}{% endblock %}
 
@@ -10,6 +10,11 @@
 
     {% bootstrap_form form %}
 
-    {% bootstrap_button button_type="submit" content=_('Save') %}
+    <div class="mt-6 flex items-center justify-start gap-x-6">
+        <button type="submit"
+                class="rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+            {% trans 'save'|capfirst %}
+        </button>
+    </div>
 </form>
 {% endblock %}

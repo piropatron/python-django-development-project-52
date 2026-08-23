@@ -9,7 +9,7 @@ from task_manager.statuses.models import Status
 
 # Create your models here.
 class Task(TimestampedModel, models.Model):
-    name = models.CharField(max_length=200, verbose_name=_('Name'), unique=True)
+    title = models.CharField(max_length=200, verbose_name=_('Title'), unique=True)
     description = models.TextField(verbose_name=_('Description'))
     status = models.ForeignKey(Status, on_delete=models.CASCADE, verbose_name=_('Status'))
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='created_tasks', verbose_name=_('Author'))

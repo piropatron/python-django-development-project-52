@@ -13,7 +13,7 @@ gunicorn-start:
 
 .PHONY: test
 test:
-	uv run pytest ./task_manager/tasks/tests.py
+	uv run pytest
 
 .PHONY: setup
 setup: db-clean install migrate
@@ -36,7 +36,7 @@ collectstatic:
 
 .PHONY: run
 run:
-	uv run manage.py runserver
+	uv run manage.py tailwind runserver
 
 .PHONY: makemigrations
 makemigrations:

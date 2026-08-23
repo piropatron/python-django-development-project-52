@@ -1,88 +1,77 @@
 <!doctype html>
-{% load django_bootstrap5 %}
+{% load tailwind_cli %}
 {% load i18n %}
 {% load static %}
 {% get_current_language as LANGUAGE_CODE %}
 <html lang="{{ LANGUAGE_CODE }}">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.84.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Django task manager{% endblock %}</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbar-fixed/">
+    {% tailwind_css %}
 
-
-    <!-- Bootstrap core CSS -->
-    {% bootstrap_css %}
-
-
-    <!-- Custom styles for this template -->
-    <link href="{% static 'task_manager/css/navbar-top-fixed.css' %}" rel="stylesheet">
+    <!-- Custom static for this template -->
+    <link href="{% static 'task_manager/styles/main.css' %}" rel="stylesheet">
 </head>
-<body class="d-flex flex-column h-10">
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'home' %}">Менеджер задач</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li class="nav-item">
-                    <a class="nav-link active" href="{% url 'users.index' %}">{% trans 'users'|capfirst %}</a>
-                </li>
-                {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'statuses.index' %}">{% trans 'statuses'|capfirst %}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'labels.index' %}">{% trans 'labels'|capfirst %}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'tasks.index' %}">{% trans 'tasks'|capfirst %}</a>
-                </li>
-
-
-                {% endif %}
-            </ul>
-            {% if user.is_authenticated %}
-            <form class="d-flex" method="post" action="{% url 'logout' %}">
-                {% csrf_token %}
-                <button class="btn btn-outline-success" type="submit">Выход</button>
-            </form>
-            {% else %}
-            <div class="d-flex navbar-nav mb-2 mb-md-0">
-
-
-            <p class="nav-item mb-1">
-                    <a class="nav-link link-light" href="{% url 'login' %}">{% trans 'Login' %}</a>
-                </p>
-                <p class="nav-item mb-1">
-                    <a class="nav-link link-light" href="{% url 'users.create' %}">Регистрация</a>
-                </p>
-                </fiv>
-
-            {% endif %}
+<body class="relative ">
+<header class="bg-gray-100">
+    <nav aria-label="Global" class="mx-auto flex  justify-between p-6 lg:px-8">
+        <div class="flex">
+            <el-popover-group>
+                <a href="{% url 'home' %}" class="text-sm/6 font-semibold">{% trans 'Task maneger' %}</a>
+                <a class="text-sm/6 " href="{% url 'users.index' %}">{% trans 'users'|capfirst %}</a>
+                <a class="text-sm/6 " href="{% url 'statuses.index' %}">{% trans 'statuses'|capfirst %}</a>
+                <a class="text-sm/6 " href="{% url 'labels.index' %}">{% trans 'labels'|capfirst %}</a>
+                <a class="text-sm/6 " href="{% url 'tasks.index' %}">{% trans 'tasks'|capfirst %}</a>
+            </el-popover-group>
         </div>
-    </div>
-</nav>
 
-<main class="flex-shrink-0">
-    <div class="container">
-    {% bootstrap_messages %}
-    {% block content %} {% endblock %}
-    {% bootstrap_javascript %}
-    </div>
+        <div class="flex">
+            <el-popover-group>
+                {% if user.is_authenticated %}
+                <form class="d-flex" method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button class="btn btn-outline-success" type="submit">{% trans 'logout'|capfirst %}</button>
+                </form>
+                {% else %}
+                <a class="text-sm/6 " href="{% url 'login' %}">{% trans 'login'|capfirst %}</a>
+                <a class="text-sm/6 " href="{% url 'users.create' %}">{% trans 'register'|capfirst %}</a>
+                {% endif %}
+            </el-popover-group>
+        </div>
+    </nav>
+</header>
+<main class="max-w-7xl mx-auto my-4">
+    {% if messages %}
+    <div class="my-5">
+        {% for message in messages %}
+        <div class="p-4 rounded-lg shadow-lg border flex justify-between items-start transition-all duration-300
+        {% if message.tags == 'success' %} bg-green-50 border-green-200 text-green-800
+        {% elif message.tags == 'error' %} bg-red-50 border-red-200 text-red-800
+        {% elif message.tags == 'warning' %} bg-yellow-50 border-yellow-200 text-yellow-800
+        {% else %} bg-blue-50 border-blue-200 text-blue-800 {% endif %}"
+             role="alert" id="django-alert-{{ forloop.counter }}">
 
+            <p class="text-sm font-medium mr-4">{{ message }}</p>
+
+            <!-- Close Button -->
+            <button onclick="document.getElementById('django-alert-{{ forloop.counter }}').remove()"
+                    class="text-current opacity-60 hover:opacity-100 font-bold leading-none text-xl focus:outline-none">
+                &times;
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% block content %}{% endblock %}
 </main>
-<footer class="footer mt-auto py-3 bg-light">
-  <div class="container">
-    <span class="text-muted">Hexlet.</span>
-  </div>
+<hr class="max-w-7xl mx-auto my-4">
+<footer class="max-w-7xl mx-auto my-4">
+    <div class="">
+        <span class="text-muted">Hexlet.</span>
+    </div>
 </footer>
 </body>
 </html>

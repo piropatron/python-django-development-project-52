@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created at')),
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Updated at')),
-                ('name', models.CharField(max_length=200, unique=True, verbose_name='Name')),
+                ('title', models.CharField(max_length=200, unique=True, verbose_name='Title')),
                 ('description', models.TextField(verbose_name='Description')),
                 ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='created_tasks', to=settings.AUTH_USER_MODEL, verbose_name='Author')),
                 ('executor', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='my_tasks', to=settings.AUTH_USER_MODEL, verbose_name='Executor')),

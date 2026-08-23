@@ -42,14 +42,15 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_bootstrap5',
+    'django_tailwind_cli',
+    'django_extensions',
+    "django_browser_reload",
     'task_manager',
     'task_manager.users',
     'task_manager.statuses',
@@ -66,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = 'task_manager.urls'
@@ -139,7 +141,7 @@ LOCALE_PATHS= [
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-
+    BASE_DIR / "assets"
 ]
 
 STATIC_ROOT = BASE_DIR / 'static'
@@ -160,3 +162,7 @@ sentry_sdk.init(
     # see https://docs.sentry.io/platforms/python/data-management/data-collected/ for more info
     send_default_pii=True,
 )
+
+# TAILWIND
+
+TAILWIND_CLI_SRC_CSS = "task_manager/static/task_manager/styles/main.css"

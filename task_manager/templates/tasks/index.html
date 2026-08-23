@@ -1,77 +1,109 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load django_bootstrap5 %}
+
 
 {% block title %}{% translate 'tasks'|capfirst %}{% endblock %}
 
 {% block content %}
 <div>
-<h2>{% translate 'tasks'|capfirst %}</h2>
-    <p>
+    <div class="lg:flex lg:items-center lg:justify-between">
+        <h2 class="text-2xl/7 font-bold sm:truncate sm:text-3xl sm:tracking-tight">{% translate 'tasks'|capfirst %}</h2>
+    </div>
+    <div class="lg:flex lg:items-center lg:justify-between my-3">
         <a href="{% url 'tasks.create' %}" class="btn btn-primary">{% translate 'Create task' %}</a>
-    </p>
+    </div>
 
-    <div class="">
-        <form action="{% url 'tasks.index' %}" method="get"  >
-            <div class="row">
-                <div class="col">
-                    {% bootstrap_field filter.form.status %}
+    <div class="mb-5">
+        <form action="{% url 'tasks.index' %}" method="get">
+
+            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div class="flex items-center sm:col-span-2">
+                    <label for="{{ filter.form.status.id_for_label }}"
+                           class="block flex-1 text-sm/6 font-medium text-gray-900">{{filter.form.status.label}}:</label>
+                    <div class="flex-3 grid grid-cols-1">
+                        {{ filter.form.status }}
+                    </div>
                 </div>
-                <div class="col">
-                    {% bootstrap_field filter.form.executor %}
+
+                <div class="flex items-center sm:col-span-2">
+                    <label for="{{ filter.form.executor.id_for_label }}"
+                           class="block flex-1 text-sm/6 font-medium text-gray-900">{{filter.form.executor.label}}:</label>
+                    <div class="flex-3 grid grid-cols-1">
+                        {{ filter.form.executor }}
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    {% bootstrap_field filter.form.labels %}
+            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+
+                <div class="flex items-center sm:col-span-2">
+                    <label for="{{ filter.form.labels.id_for_label }}"
+                           class="block flex-1 text-sm/6 font-medium text-gray-900">{{filter.form.labels.label}}:</label>
+                    <div class="flex-3">
+                        {{ filter.form.labels }}
+                    </div>
                 </div>
-                <div class="col">
-                    {% bootstrap_field filter.form.only_my_task %}
+                <div class="flex items-center sm:col-span-1">
+                    <div class="flex-1">
+                        {{ filter.form.only_my_task }}
+                    </div>
+                    <label for="{{ filter.form.only_my_task.id_for_label }}"
+                           class="block flex-3 text-sm/6 font-medium text-gray-900">{{filter.form.only_my_task.label}}:</label>
                 </div>
-                <div class="col">
-                    {% bootstrap_button button_type="submit" content=_('Show') %}
+                <div class="mt-6 flex items-center justify-end ">
+                    <button type="submit"
+                            class="rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                        {% trans 'show'|capfirst %}
+                    </button>
                 </div>
             </div>
         </form>
     </div>
-
-    <table class="table">
-    <thead>
-    <tr>
-        <th scope="col">{% translate 'ID' %}</th>
-        <th scope="col">{% translate 'name' %}</th>
-        <th scope="col">{% translate 'status' %}</th>
-        <th scope="col">{% translate 'author' %}</th>
-        <th scope="col">{% translate 'executor' %}</th>
-        <th scope="col">{% translate 'created at' %}</th>
-        <th scope="col"></th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for task in tasks_list %}
-    <tr>
-        <th scope="row">{{ task.pk }}</th>
-        <td><a href="{% url 'tasks.detail' task.id %}">{{ task.name }}</a></td>
-        <td>{{ task.status.name }}</td>
-        <td>{{ task.author.first_name }} {{ task.author.last_name }} {{ task.author.username }}</td>
-        <td>{{ task.executor.first_name }} {{ task.executor.last_name }} {{ task.executor.username }}</td>
-        <td>{{ task.created_at }}</td>
-        <td>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                  <a href="{% url 'tasks.update' task.id %}">{% translate 'edit' %}</a>
-                </li>
-                <li class="list-group-item">
-                    <a href="{% url 'tasks.delete' task.id %}">{% translate 'delete' %}</a>
-                </li>
-            </ul>
-        </td>
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
-
-        {% bootstrap_pagination tasks_list  %}
+    <div class="mb-5">
+        <table class="table-fixed w-full border-collapse border border-gray-400">
+            <thead>
+            <tr>
+                <th class="p-4 text-left border border-gray-300" scope="col">{% translate 'ID'|capfirst %}</th>
+                <th class="p-4 text-left border border-gray-300" scope="col">{% translate 'name'|capfirst %}</th>
+                <th class="p-4 text-left border border-gray-300" scope="col">{% translate 'status'|capfirst %}</th>
+                <th class="p-4 text-left border border-gray-300" scope="col">{% translate 'author'|capfirst %}</th>
+                <th class="p-4 text-left border border-gray-300" scope="col">{% translate 'executor'|capfirst %}</th>
+                <th class="p-4 text-left border border-gray-300" scope="col">{% translate 'created at'|capfirst %}</th>
+                <th class="p-4 text-left border border-gray-300" scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for task in tasks_list %}
+            <tr class="{% if forloop.counter|divisibleby:2 %}bg-gray-200{% endif %}">
+                <td class="p-4 text-left border border-gray-300">{{ task.pk }}</td>
+                <td class="p-4 text-left border border-gray-300">
+                    <a href="{% url 'tasks.detail' task.id %}">{{ task.name }}</a>
+                </td>
+                <td class="p-4 text-left border border-gray-300">{{ task.status.name }}</td>
+                <td class="p-4 text-left border border-gray-300">
+                    {{ task.author.first_name }} {{ task.author.last_name }} {{ task.author.username }}
+                </td>
+                <td class="p-4 text-left border border-gray-300">
+                    {{ task.executor.first_name }} {{ task.executor.last_name }} {{ task.executor.username }}
+                </td>
+                <td class="p-4 text-left border border-gray-300">{{ task.created_at }}</td>
+                <td class="p-4 text-left border border-gray-300">
+                    <ul>
+                        <li>
+                            <a class="text-blue-500" href="{% url 'tasks.update' task.id %}">
+                                {% translate 'edit' %}
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-blue-500" href="{% url 'tasks.delete' task.id %}">
+                                {% translate 'delete' %}</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 
 

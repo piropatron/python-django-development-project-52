@@ -1,17 +1,89 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load django_bootstrap5 %}
 
 {% block title %}{% translate 'Update task' %}{% endblock %}
 
 {% block content %}
-<h2>{% trans 'Update task' %}</h2>
+<div class="lg:flex lg:items-center lg:justify-between">
+    <h2 class="text-2xl/7 font-bold sm:truncate sm:text-3xl sm:tracking-tight">{% trans 'Update task' %}</h2>
+</div>
 
-<form method="post" action="{% url 'tasks.update' task_id %}" class="form">
+<form method="post" action="{% url 'tasks.update' task_id %}">
     {% csrf_token %}
 
-    {% bootstrap_form form %}
+    <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div class="sm:col-span-4">
+            <label for="{{ form.title.id_for_label }}"
+                   class="block text-sm/6 font-medium">{{form.title.label}}:</label>
+            <div class="mt-2">
+                <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
 
-    {% bootstrap_button button_type="submit" content=_('Save') %}
+                    <input id="{{ form.title.auto_id }}" type="text" name="{{ form.title.html_name }}"
+                           value="{% if form.title.value %}{{ form.title.value }}{% endif %}"
+                           required
+                           class="block min-w-0 grow bg-white py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"/>
+                </div>
+            </div>
+            <div class="text-red-500 text-sm">
+                {{ form.title.errors }}
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div class="sm:col-span-4">
+            <label for="{{ form.description.id_for_label }}"
+                   class="block text-sm/6 font-medium">{{form.description.label}}:</label>
+            <div class="mt-2">
+                    <textarea id="{{ form.description.auto_id }}" type="text" name="{{ form.description.html_name }}"
+                              required
+                              rows="3"
+                              class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                    >{% if form.description.value %}{{ form.description.value }}{% endif %}</textarea>
+            </div>
+            <div class="text-red-500 text-sm">
+                {{ form.description.errors }}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="sm:col-span-3">
+        <label for="{{ form.status.id_for_label }}" class="block text-sm/6 font-medium text-gray-900">{{form.status.label}}:</label>
+        <div class="mt-2 grid grid-cols-1">
+            {{ form.status }}
+            <svg viewBox="0 0 16 16" fill="currentColor" data-slot="icon" aria-hidden="true"
+                 class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4">
+                <path d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
+                      clip-rule="evenodd" fill-rule="evenodd"/>
+            </svg>
+        </div>
+    </div>
+
+    <div class="sm:col-span-3">
+        <label for="{{ form.executor.id_for_label }}" class="block text-sm/6 font-medium text-gray-900">{{form.executor.label}}:</label>
+        <div class="mt-2 grid grid-cols-1">
+            {{ form.executor }}
+            <svg viewBox="0 0 16 16" fill="currentColor" data-slot="icon" aria-hidden="true"
+                 class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4">
+                <path d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
+                      clip-rule="evenodd" fill-rule="evenodd"/>
+            </svg>
+        </div>
+    </div>
+    <div class="sm:col-span-3">
+        <label for="{{ form.labels.id_for_label }}" class="block text-sm/6 font-medium text-gray-900">{{form.labels.label}}:</label>
+        <div class="mt-2 grid grid-cols-1">
+            {{ form.labels }}
+        </div>
+    </div>
+
+
+    <div class="mt-6 flex items-center justify-start gap-x-6">
+        <button type="submit"
+                class="rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+            {% trans 'save'|capfirst %}
+        </button>
+    </div>
 </form>
 {% endblock %}

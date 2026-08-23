@@ -11,7 +11,7 @@ from .models import Task
 
 
 # Create your views here.
-class CreateView(View):
+class CreateView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         form = TaskCreateForm()
         return render(
@@ -34,7 +34,7 @@ class CreateView(View):
         return render(request, 'tasks/create.html', {'form': form})
 
 
-class DeleteView(View):
+class DeleteView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         task_id = kwargs.get("pk")
 
@@ -73,7 +73,7 @@ class IndexView(LoginRequiredMixin, View):
         )
 
 
-class UpdateView(View):
+class UpdateView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         task_id = kwargs.get("pk")
         task = Task.objects.get(id=task_id)
@@ -99,6 +99,6 @@ class UpdateView(View):
         return render(request, 'tasks/update.html', {'form': form, 'task_id': task_id})
 
 
-class DetailView(generic.DetailView):
+class DetailView(LoginRequiredMixin, generic.DetailView):
     model = Task
     template_name = "tasks/detail.html"

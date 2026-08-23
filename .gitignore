@@ -9,8 +9,8 @@ wheels/
 # Virtual environments
 .venv
 
-public/*
-!public/.keep
+assets/*
+!assets/.keep
 db.sqlite3
 .idea
 .env

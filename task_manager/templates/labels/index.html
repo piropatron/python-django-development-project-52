@@ -1,38 +1,42 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load django_bootstrap5 %}
+
 
 {% block title %}{% translate 'labels'|capfirst %}{% endblock %}
 
 {% block content %}
-<div>
-<h2>{% translate 'labels'|capfirst %}</h2>
-    <p>
-        <a href="{% url 'labels.create' %}" class="btn btn-primary">{% translate 'Create tag' %}</a>
-    </p>
+<div class="lg:flex lg:items-center lg:justify-between">
+    <h2 class="text-2xl/7 font-bold sm:truncate sm:text-3xl sm:tracking-tight">{% translate 'labels'|capfirst %}</h2>
+</div>
 
-    <table class="table">
+
+<div class="lg:flex lg:items-center lg:justify-between my-3">
+    <a href="{% url 'labels.create' %}" class="btn btn-primary">{% translate 'Create tag' %}</a>
+</div>
+
+
+<table class="table-fixed w-full border-collapse border border-gray-400">
     <thead>
     <tr>
-        <th scope="col">{% translate 'ID' %}</th>
-        <th scope="col">{% translate 'name'|capfirst %}</th>
-        <th scope="col">{% translate 'created at'|capfirst %}</th>
-        <th scope="col"></th>
+        <th class="p-4 text-left border border-gray-300" scope="col">{% translate 'ID' %}</th>
+        <th class="p-4 text-left border border-gray-300" scope="col">{% translate 'name'|capfirst %}</th>
+        <th class="p-4 text-left border border-gray-300" scope="col">{% translate 'created at'|capfirst %}</th>
+        <th class="p-4 text-left border border-gray-300" scope="col"></th>
     </tr>
     </thead>
     <tbody>
     {% for label in labels %}
-    <tr>
-        <th scope="row">{{ label.pk }}</th>
-        <td>{{ label.name }}</td>
-        <td>{{ label.created_at }}</td>
-        <td>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                  <a href="{% url 'labels.update' label.id %}">{% translate 'edit' %}</a>
+    <tr class="{% if forloop.counter|divisibleby:2 %}bg-gray-200{% endif %}">
+        <td class="p-4 text-left border border-gray-300">{{ label.pk }}</td>
+        <td class="p-4 text-left border border-gray-300">{{ label.name }}</td>
+        <td class="p-4 text-left border border-gray-300">{{ label.created_at }}</td>
+        <td class="p-4 text-left border border-gray-300">
+            <ul>
+                <li>
+                    <a class="text-blue-500" href="{% url 'labels.update' label.id %}">{% translate 'edit' %}</a>
                 </li>
-                <li class="list-group-item">
-                    <a href="{% url 'labels.delete' label.id %}">{% translate 'delete' %}</a>
+                <li>
+                    <a class="text-blue-500" href="{% url 'labels.delete' label.id %}">{% translate 'delete' %}</a>
                 </li>
             </ul>
         </td>

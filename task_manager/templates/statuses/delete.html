@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load django_bootstrap5 %}
+
 
 {% block title %}{% translate 'Delete label' %}{% endblock %}
 
@@ -9,6 +9,11 @@
 <form action="{% url 'statuses.delete' status_id %}" method="post">
     {% csrf_token %}
 
-    {% bootstrap_button button_type="submit" content=_('Delete') %}
+        <div class="mt-6 flex items-center justify-start gap-x-6">
+        <button type="submit"
+                class="rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+            {% trans 'delete'|capfirst %}
+        </button>
+    </div>
 </form>
 {% endblock %}

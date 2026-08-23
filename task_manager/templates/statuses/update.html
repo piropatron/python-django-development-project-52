@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load django_bootstrap5 %}
+
 
 {% block title %}{% translate 'Update status' %}{% endblock %}
 
@@ -10,8 +10,28 @@
 <form method="post" action="{% url 'statuses.update' status_id %}" class="form">
     {% csrf_token %}
 
-    {% bootstrap_form form %}
+    <div class="space-y-6">
+        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+            <div class="sm:col-span-4">
+                <label for="{{ form.name.id_for_label }}"
+                       class="block text-sm/6 font-medium">{{form.name.label}}:</label>
+                <div class="mt-2">
+                    <input id="{{ form.name.auto_id }}" type="text" name="{{ form.name.html_name }}"
+                           value="{{ form.name.value }}"
+                           class="block w-90 border-1 border-gray-500 px-3 py-1.5 text-base"/>
+                </div>
+                <div class="text-red-500 text-sm">
+                    {{ form.name.errors }}
+                </div>
+            </div>
+        </div>
+    </div>
 
-    {% bootstrap_button button_type="submit" content=_('Save') %}
+    <div class="mt-6 flex items-center justify-start gap-x-6">
+        <button type="submit"
+                class="rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+            {% trans 'save'|capfirst %}
+        </button>
+    </div>
 </form>
 {% endblock %}

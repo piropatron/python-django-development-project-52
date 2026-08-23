@@ -1,45 +1,51 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load django_bootstrap5 %}
+
 
 {% block title %}{% translate 'Statuses' %}{% endblock %}
 
 {% block content %}
 <div>
-<h2>{% translate 'Statuses' %}</h2>
-    <p>
+    <div class="lg:flex lg:items-center lg:justify-between">
+        <h2 class="text-2xl/7 font-bold sm:truncate sm:text-3xl sm:tracking-tight">{% translate 'Statuses' %}</h2>
+    </div>
+    <div class="lg:flex lg:items-center lg:justify-between my-3">
         <a href="{% url 'statuses.create' %}" class="btn btn-primary">{% translate 'Create status' %}</a>
-    </p>
+    </div>
 
-    <table class="table">
-    <thead>
-    <tr>
-        <th scope="col">{% translate 'ID' %}</th>
-        <th scope="col">{% translate 'first name' %}</th>
-        <th scope="col">{% translate 'created at' %}</th>
-        <th scope="col"></th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for status in statuses %}
-    <tr>
-        <th scope="row">{{ status.pk }}</th>
-        <td>{{ status.name }}</td>
-        <td>{{ status.created_at }}</td>
-        <td>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                  <a href="{% url 'statuses.update' status.id %}">{% translate 'edit' %}</a>
-                </li>
-                <li class="list-group-item">
-                    <a href="{% url 'statuses.delete' status.id %}">{% translate 'delete' %}</a>
-                </li>
-            </ul>
-        </td>
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
+    <table class="table-fixed w-full border-collapse border border-gray-400">
+        <thead>
+        <tr>
+            <th class="p-4 text-left border border-gray-300" scope="col">{% translate 'ID'|capfirst %}</th>
+            <th class="p-4 text-left border border-gray-300" scope="col">{% translate 'first name'|capfirst %}</th>
+            <th class="p-4 text-left border border-gray-300" scope="col">{% translate 'created at'|capfirst %}</th>
+            <th class="p-4 text-left border border-gray-300" scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for status in statuses %}
+        <tr class="{% if forloop.counter|divisibleby:2 %}bg-gray-200{% endif %}">
+            <td class="p-4 text-left border border-gray-300">{{ status.pk }}</td>
+            <td class="p-4 text-left border border-gray-300">{{ status.name }}</td>
+            <td class="p-4 text-left border border-gray-300">{{ status.created_at }}</td>
+            <td class="p-4 text-left border border-gray-300">
+                <ul>
+                    <li>
+                        <a class="text-blue-500" href="{% url 'statuses.update' status.id %}">
+                            {% translate 'edit'|capfirst %}
+                        </a>
+                    </li>
+                    <li>
+                        <a class="text-blue-500" href="{% url 'statuses.delete' status.id %}">
+                            {% translate 'delete'|capfirst %}
+                        </a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
 
 </div>

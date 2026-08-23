@@ -4,9 +4,17 @@
 {% block title %}Эксперименты с Django на Хекслете{% endblock %}
 
 {% block content %}
-<div class="bg-light p-5 rounded">
-    <h1>{% translate "Hello from Hexlet"  %}</h1>
-    <p class="lead">{% translate "Practical programming courses"  %}</p>
-    <a class="btn btn-lg btn-primary" href="https://ru.hexlet.io" role="button">{% translate 'Learn more' %}</a>
+<!-- items-center gap-x-4  bac   shadow-lg outline  -->
+<div class="mx-auto p-6 bg-gray-100  rounded-md border-1 border-gray-200">
+    <div class="text-xl font-medium my-3"><h2>{% translate "Hello from Hexlet" %}</h2></div>
+    <div class="flex my-3">
+        <p class="lead">{% translate "Practical programming courses" %}</p>
+    </div>
+    <hr class="my-4"/>
+    <div class="flex my-2">
+        <a class="bg-blue-500 rounded-md px-4 py-2" href="https://ru.hexlet.io" role="button">
+            {% translate 'Learn more' %}
+        </a>
+    </div>
 </div>
 {% endblock %}
