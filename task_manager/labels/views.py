@@ -46,17 +46,17 @@ class CreateView(LoginRequiredMixin, View):
 
 class DeleteView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
-        tag_id = kwargs.get("pk")
+        label_id = kwargs.get("pk")
 
         return render(
-            request, "labels/delete.html", {"tag_id": tag_id}
+            request, "labels/delete.html", {"label_id": label_id}
         )
 
     def post(self, request, *args, **kwargs):
         label_id = kwargs.get("pk")
         label = get_object_or_404(Label, id=label_id)
         if label.tasks.exists():
-            messages.error(request, "Невозможно удалить метку")
+            messages.error(request, _("Unable to delete label"))
             return redirect('labels.index')
 
         label.delete()
@@ -67,16 +67,16 @@ class DeleteView(LoginRequiredMixin, View):
 
 class UpdateView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
-        tag_id = kwargs.get("pk")
-        user = Label.objects.get(id=tag_id)
+        label_id = kwargs.get("pk")
+        user = Label.objects.get(id=label_id)
         form = LabelChangeForm(instance=user)
         return render(
-            request, "labels/update.html", {"form": form, "tag_id": tag_id}
+            request, "labels/update.html", {"form": form, "label_id": label_id}
         )
 
     def post(self, request, *args, **kwargs):
-        tag_id = kwargs.get("pk")
-        user = Label.objects.get(id=tag_id)
+        label_id = kwargs.get("pk")
+        user = Label.objects.get(id=label_id)
         form = LabelChangeForm(request.POST, instance=user)
         if form.is_valid():
             form.save()
@@ -85,5 +85,5 @@ class UpdateView(LoginRequiredMixin, View):
             return redirect("labels.index")
 
         return render(
-            request, "labels/update.html", {"form": form, "tag_id": tag_id}
+            request, "labels/update.html", {"form": form, "label_id": label_id}
         )

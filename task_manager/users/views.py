@@ -7,6 +7,9 @@ from django.views import View
 
 from .forms import UserChangeForm, UserForm
 
+from django.utils.translation import gettext_lazy as _
+from ..tasks.models import Task
+
 
 class IndexView(View):
     def get(self, request, *args, **kwargs):
@@ -80,6 +83,11 @@ class DeleteView(LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):
         user_id = kwargs.get("pk")
         user = get_object_or_404(User, id=user_id)
+        if Task.objects.filter(author=user).exists() or Task.objects.filter(executor=user).exists():
+            messages.error(request, _("Unable to delete user"))
+            return redirect('users.index')
+
+
         user.delete()
         messages.add_message(request, messages.INFO, _("User successfully deleted"))
 

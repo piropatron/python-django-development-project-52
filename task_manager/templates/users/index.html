@@ -19,7 +19,7 @@
     {% for siteUser in users %}
     <tr>
         <th scope="row">{{ siteUser.pk }}</th>
-        <td>{{ siteUser.first_name }}</td>
+        <td>{{ siteUser.first_name }} {{ siteUser.last_name }}</td>
         <td>{{ siteUser.date_joined }}</td>
         <!--      <td>{{ user.username }}</td>-->
         <td>

@@ -2,11 +2,11 @@
 {% load i18n %}
 {% load django_bootstrap5 %}
 
-{% block title %}{% translate 'Delete tag' %}{% endblock %}
+{% block title %}{% translate 'Delete label' %}{% endblock %}
 
 {% block content %}
 
-<form action="{% url 'labels.delete' tag_id %}" method="post">
+<form action="{% url 'labels.delete' label_id %}" method="post">
     {% csrf_token %}
 
     {% bootstrap_button button_type="submit" content=_('Delete') %}
