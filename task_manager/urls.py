@@ -32,7 +32,7 @@ urlpatterns = ([
     path("login/", auth_views.LoginView.as_view(template_name="users/login.html"), name="login"),
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
     path('admin/', admin.site.urls),
-    path("__reload__/", include("django_browser_reload.urls")),
+    # path("__reload__/", include("django_browser_reload.urls")),
 ]
                + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 )
