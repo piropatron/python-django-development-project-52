@@ -76,7 +76,9 @@
             <tr class="{% if forloop.counter|divisibleby:2 %}bg-gray-200{% endif %}">
                 <td class="p-4 text-left border border-gray-300">{{ task.pk }}</td>
                 <td class="p-4 text-left border border-gray-300">
-                    <a href="{% url 'tasks.detail' task.id %}">{{ task.name }}</a>
+                    <a class="text-blue-500" href="{% url 'tasks.detail' task.id %}">
+                        {{ task.title }}
+                    </a>
                 </td>
                 <td class="p-4 text-left border border-gray-300">{{ task.status.name }}</td>
                 <td class="p-4 text-left border border-gray-300">

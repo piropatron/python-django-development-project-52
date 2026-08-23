@@ -5,75 +5,74 @@
 {% block title %}{{ model.name }}{% endblock %}
 
 {% block content %}
-<h2 class="my-4">{% trans 'Task detail' %}</h2>
-<div class="card">
-    <div class="card-header text-bg-secondary">
-        {{ task.name }}
+<div class="m-3">
+    <div class="lg:flex lg:items-center lg:justify-between mb-4">
+        <h2 class="text-2xl/7 font-bold sm:truncate sm:text-3xl sm:tracking-tight">{% trans 'Task detail' %}</h2>
     </div>
-    <div class="card-body">
-        <div>
-            <p>
-                {{ task.description }}
-            </p>
+
+    <div class="border border-gray-300 ">
+        <div class="bg-gray-600 px-8 py-4">
+            {{ task.title }}
         </div>
-        <hr>
-        <div class="container ">
-            <div class="row mb-3">
-                <div class="col">
-                    {% translate 'author' %}
-                </div>
-                <div class="col">
+        <div class="grid grid-cols-4 gap-4 mx-5">
+            <div class="col-span-4 border-b-1 border-b-gray-500 ">
+                <p class="m-3">
+                    {{ task.description }}
+                </p>
+            </div>
+            <div class="col-span-2">
+                <p class="m-3">
+                    {% translate 'author'|capfirst %}
+                </p>
+            </div>
+            <div class="col-span-2">
+                <p class="m-3">
                     {{ task.author.first_name }} {{ task.author.last_name }} {{ task.author.username }}
-                </div>
+                </p>
             </div>
-
-            <div class="row mb-3">
-                <div class="col">
-                    {% translate 'executor' %}
-                </div>
-                <div class="col">
+            <div class="col-span-2">
+                <p class="m-3">
+                    {% translate 'executor'|capfirst %}
+                </p>
+            </div>
+            <div class="col-span-2">
+                <p class="m-3">
                     {{ task.executor.first_name }} {{ task.executor.last_name }} {{ task.executor.username }}
-                </div>
+                </p>
             </div>
-            <div class="row mb-3">
-                <div class="col">
-                    {% translate 'status' %}
-                </div>
-                <div class="col">
+            <div class="col-span-2">
+                <p class="m-3">
+                {% translate 'status'|capfirst %}
+                </p>
+            </div>
+            <div class="col-span-2">
+                <p class="m-3">
                     {{task.status.name}}
-                </div>
+                </p>
             </div>
-            <div class="row mb-3">
-                <div class="col">
-                    {% translate 'created at' %}
-                </div>
-                <div class="col">
-                    {{ task.created_at }}
-                </div>
+            <div class="col-span-2">
+                <p class="m-3">
+                {% translate 'created at'|capfirst %}
+                </p>
             </div>
-            <div class="row">
-                <div class="col-6">
-                    <p>{% trans 'labels' %}</p>
-                    <ul>
-                        {% for label in task.labels.all %}
-                        <li>{{label.name}}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
+            <div class="col-span-2">
+                <p class="m-3">
+                {{ task.created_at }}
+                </p>
             </div>
-            <div class="row">
-                <div class="col-1">
-                    <a href="{% url 'tasks.update' task.id %}">{% translate 'edit' %}</a>
-                </div>
-                <div class="col-1">
-                    <a href="{% url 'tasks.delete' task.id %}">{% translate 'delete' %}</a>
-
-                </div>
-                <div class="col-10"></div>
+            <div class="col-span-4 ">
+                <p class="m-3">{% trans 'labels'|capfirst %}</p>
+                <ul class="list-disc pl-10">
+                    {% for label in task.labels.all %}
+                    <li>{{label.name}}</li>
+                    {% endfor %}
+                </ul>
             </div>
-
+            <div class="col-span-4 p-4">
+                <a class="text-blue-500 pr-10" href="{% url 'tasks.update' task.id %}">{% translate 'edit'|capfirst %}</a>
+                <a class="text-blue-500" href="{% url 'tasks.delete' task.id %}">{% translate 'delete'|capfirst %}</a>
+            </div>
         </div>
-
     </div>
 </div>
 {% endblock %}
