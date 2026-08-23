@@ -14,6 +14,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 import dj_database_url
+import sentry_sdk
+
 
 load_dotenv()
 
@@ -31,6 +33,8 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG_ENABLED", False)
 
 ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
     os.getenv("ALLOWED_HOST", '')
 ]
 
@@ -148,3 +152,11 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+
+sentry_sdk.init(
+    dsn=os.getenv('BUGSINK_DSN', ''),
+    # Add data like request headers and IP for users;
+    # see https://docs.sentry.io/platforms/python/data-management/data-collected/ for more info
+    send_default_pii=True,
+)
