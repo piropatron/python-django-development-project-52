@@ -5,10 +5,8 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.translation import gettext_lazy as _
 from django.views import View
 
-from .forms import UserChangeForm, UserForm
-
-from django.utils.translation import gettext_lazy as _
 from ..tasks.models import Task
+from .forms import UserChangeForm, UserForm
 
 
 class IndexView(View):
@@ -86,7 +84,6 @@ class DeleteView(LoginRequiredMixin, View):
         if Task.objects.filter(author=user).exists() or Task.objects.filter(executor=user).exists():
             messages.error(request, _("Unable to delete user"))
             return redirect('users.index')
-
 
         user.delete()
         messages.add_message(request, messages.INFO, _("User successfully deleted"))
