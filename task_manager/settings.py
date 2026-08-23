@@ -138,7 +138,7 @@ LOCALE_PATHS= [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "assets"
@@ -165,4 +165,4 @@ sentry_sdk.init(
 
 # TAILWIND
 
-TAILWIND_CLI_SRC_CSS = "task_manager/static/task_manager/styles/main.css"
+# TAILWIND_CLI_SRC_CSS = "task_manager/assets/task_manager/styles/main.css"
