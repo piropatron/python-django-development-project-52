@@ -36,7 +36,7 @@ class CreateView(View):
         form = UserForm(request.POST)
         if form.is_valid():  # Если данные корректные, то сохраняем данные формы
             form.save()
-            messages.add_message(request, messages.INFO, _('The user has been successfully registered.'))
+            messages.add_message(request, messages.INFO, _('The user has been successfully registered'))
             return redirect('login')  # Редирект на указанный маршрут
         # Если данные некорректные, то возвращаем человека обратно на страницу с заполненной формой
         return render(request, 'users/create.html', {'form': form})
@@ -46,7 +46,7 @@ class UpdateView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         user_id = kwargs.get("pk")
         if request.user.id is not user_id:
-            messages.add_message(request, messages.INFO, _("You do not have permission to make changes."))
+            messages.add_message(request, messages.INFO, _("You do not have permission to make changes"))
             return redirect("users.index")
 
         user = User.objects.get(id=user_id)

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-23 23:23+0000\n"
+"POT-Creation-Date: 2026-08-24 20:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -131,44 +131,42 @@ msgstr "Вход"
 msgid "save"
 msgstr "сохранить"
 
-#: task_manager/templates/base.html:22
+#: task_manager/templates/base.html:19
 msgid "Task manager"
 msgstr "Менеджер задач"
 
-#: task_manager/templates/base.html:23
+#: task_manager/templates/base.html:20
 msgid "users"
 msgstr "пользователи"
 
-#: task_manager/templates/base.html:24
+#: task_manager/templates/base.html:21
 msgid "statuses"
 msgstr "статусы"
 
-#: task_manager/templates/base.html:25
+#: task_manager/templates/base.html:22
 #: task_manager/templates/labels/index.html:5
 #: task_manager/templates/labels/index.html:9
 #: task_manager/templates/tasks/detail.html:64
 msgid "labels"
 msgstr "метки"
 
-#: task_manager/templates/base.html:26
+#: task_manager/templates/base.html:23
 #: task_manager/templates/tasks/index.html:5
 #: task_manager/templates/tasks/index.html:10
 msgid "tasks"
 msgstr "задачи"
 
-#: task_manager/templates/base.html:35
+#: task_manager/templates/base.html:32
 msgid "logout"
 msgstr "выход"
 
-#: task_manager/templates/base.html:38
+#: task_manager/templates/base.html:35
 msgid "login"
 msgstr "вход"
 
-#: task_manager/templates/base.html:39
-#: task_manager/templates/users/create.html:4
-#: task_manager/templates/users/create.html:86
-msgid "register"
-msgstr "зарегистрироваться"
+#: task_manager/templates/base.html:36
+msgid "registration"
+msgstr "Регистрация"
 
 #: task_manager/templates/index.html:9
 msgid "Hello from Hexlet"
@@ -200,16 +198,11 @@ msgid "Delete label"
 msgstr "Удалить метку"
 
 #: task_manager/templates/labels/delete.html:15
-#: task_manager/templates/labels/index.html:39
 #: task_manager/templates/statuses/delete.html:15
-#: task_manager/templates/statuses/index.html:40
 #: task_manager/templates/tasks/delete.html:15
-#: task_manager/templates/tasks/detail.html:73
-#: task_manager/templates/tasks/index.html:100
 #: task_manager/templates/users/delete.html:15
-#: task_manager/templates/users/index.html:30
-msgid "delete"
-msgstr "удалить"
+msgid "confirmDelete"
+msgstr "Да, удалить"
 
 #: task_manager/templates/labels/index.html:21
 #: task_manager/templates/statuses/index.html:19
@@ -237,6 +230,14 @@ msgstr "дата создания"
 #: task_manager/templates/users/index.html:27
 msgid "edit"
 msgstr "изменить"
+
+#: task_manager/templates/labels/index.html:39
+#: task_manager/templates/statuses/index.html:40
+#: task_manager/templates/tasks/detail.html:73
+#: task_manager/templates/tasks/index.html:100
+#: task_manager/templates/users/index.html:30
+msgid "delete"
+msgstr "удалить"
 
 #: task_manager/templates/labels/update.html:5
 #: task_manager/templates/labels/update.html:8
@@ -297,6 +298,11 @@ msgstr "просмотр"
 msgid "Update task"
 msgstr "Редактировать задачу"
 
+#: task_manager/templates/users/create.html:4
+#: task_manager/templates/users/create.html:86
+msgid "register"
+msgstr "зарегистрировать"
+
 #: task_manager/templates/users/delete.html:5
 msgid "Delete user"
 msgstr "Удалить пользователя"
@@ -326,11 +332,11 @@ msgid "Enter the same password as before, for verification."
 msgstr "Введите тот же пароль, что и раньше, для подтверждения."
 
 #: task_manager/users/views.py:39
-msgid "The user has been successfully registered."
-msgstr "Пользователь успешно зарегистрирован."
+msgid "The user has been successfully registered"
+msgstr "Пользователь успешно зарегистрирован"
 
 #: task_manager/users/views.py:49
-msgid "You do not have permission to make changes."
+msgid "You do not have permission to make changes"
 msgstr "У вас нет прав для изменения"
 
 #: task_manager/users/views.py:64
