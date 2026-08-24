@@ -32,7 +32,7 @@ shell:
 
 .PHONY: collectstatic
 collectstatic:
-	@$(MANAGE) collectstatic --noinput
+	@$(MANAGE) collectstatic -c --noinput --traceback
 
 .PHONY: run
 run:
