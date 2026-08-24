@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-24 20:04+0000\n"
+"POT-Creation-Date: 2026-08-24 21:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,7 +82,7 @@ msgstr "Только свои задачи"
 
 #: task_manager/tasks/models.py:12
 msgid "Title"
-msgstr "Заголовок"
+msgstr "Имя"
 
 #: task_manager/tasks/models.py:13
 msgid "Description"
@@ -106,7 +106,7 @@ msgstr "Задача успешно создана"
 
 #: task_manager/tasks/tests.py:133 task_manager/tasks/views.py:96
 msgid "Task successfully updated"
-msgstr "Задача успешно обновлена"
+msgstr "Задача успешно изменена"
 
 #: task_manager/tasks/tests.py:163 task_manager/tasks/views.py:53
 msgid "Task successfully deleted"
@@ -119,7 +119,6 @@ msgstr "Задачу может удалить только ее автор"
 #: task_manager/templates/auth/user_update_form.html:5
 #: task_manager/templates/users/login.html:4
 #: task_manager/templates/users/login.html:18
-#: task_manager/templates/users/login.html:51
 msgid "Login"
 msgstr "Вход"
 
@@ -129,7 +128,7 @@ msgstr "Вход"
 #: task_manager/templates/tasks/update.html:85
 #: task_manager/templates/users/update.html:86
 msgid "save"
-msgstr "сохранить"
+msgstr "изменить"
 
 #: task_manager/templates/base.html:19
 msgid "Task manager"
@@ -314,6 +313,10 @@ msgstr "пользователи"
 #: task_manager/templates/users/index.html:14
 msgid "date joined"
 msgstr "Дата создания"
+
+#: task_manager/templates/users/login.html:51
+msgid "Do login"
+msgstr "войти"
 
 #: task_manager/templates/users/update.html:5
 msgid "Update user"

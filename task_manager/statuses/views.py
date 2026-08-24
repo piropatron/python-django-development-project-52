@@ -11,7 +11,7 @@ from .models import Status
 # Create your views here.
 class IndexView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
-        statuses = Status.objects.all()[:15]
+        statuses = Status.objects.all()
         return render(
             request,
             "statuses/index.html",

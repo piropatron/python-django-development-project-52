@@ -19,7 +19,7 @@
     {% for siteUser in users %}
     <tr class="{% if forloop.counter|divisibleby:2 %}bg-gray-200{% endif %}">
         <td class="p-4 text-left border border-gray-300">{{ siteUser.pk }}</td>
-        <td class="p-4 text-left border border-gray-300">{{ siteUser.first_name }} {{ siteUser.last_name }}</td>
+        <td class="p-4 text-left border border-gray-300">{{ siteUser.first_name }} {{ siteUser.last_name }} {{ siteUser.username }}</td>
         <td class="p-4 text-left border border-gray-300">{{ siteUser.date_joined }}</td>
         <td class="p-4 text-left border border-gray-300">
             <ul class="list-group list-group-flush">

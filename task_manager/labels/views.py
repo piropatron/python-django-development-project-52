@@ -13,7 +13,7 @@ from .models import Label
 # Create your views here.
 class IndexView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
-        labels = Label.objects.all()[:15]
+        labels = Label.objects.all()
         return render(
             request,
             "labels/index.html",

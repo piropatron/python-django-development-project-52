@@ -32,8 +32,8 @@
                     <button class="btn btn-outline-success" type="submit">{% trans 'logout'|capfirst %}</button>
                 </form>
                 {% else %}
-                <a class="text-sm/6 " href="{% url 'login' %}">{% trans 'login'|capfirst %}</a>
-                <a class="text-sm/6 " href="{% url 'users.create' %}">{% trans 'registration'|capfirst %}</a>
+                <a class="text-sm/6" role="link" href="{% url 'login' %}">{% trans 'login'|capfirst %}</a>
+                <a class="text-sm/6 " role="link" href="{% url 'users.create' %}">{% trans 'registration'|capfirst %}</a>
                 {% endif %}
             </el-popover-group>
         </div>

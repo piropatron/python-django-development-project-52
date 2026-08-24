@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import include, path
 
-from task_manager.views import IndexView
+from task_manager.views import IndexView, CustomLoginView, CustomLogoutView
 
 from . import settings
 
@@ -29,8 +29,10 @@ urlpatterns = ([
     path("statuses/", include("task_manager.statuses.urls")),
     path("tasks/", include("task_manager.tasks.urls")),
     path("labels/", include("task_manager.labels.urls")),
-    path("login/", auth_views.LoginView.as_view(template_name="users/login.html"), name="login"),
-    path("logout/", auth_views.LogoutView.as_view(), name="logout"),
+
+    path("login/", CustomLoginView.as_view(template_name="users/login.html"), name="login"),
+    path("logout/", CustomLogoutView.as_view(), name="logout"),
+
     path('admin/', admin.site.urls),
     # path("__reload__/", include("django_browser_reload.urls")),
 ]
