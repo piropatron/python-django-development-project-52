@@ -1,11 +1,13 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Model
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.translation import gettext_lazy as _
 from django.views import View
 
 from .forms import StatusChangeForm, StatusCreateForm
 from .models import Status
+from ..tasks.models import Task
 
 
 # Create your views here.
@@ -52,8 +54,13 @@ class DeleteView(LoginRequiredMixin, View):
 
     def post(self, request, *args, **kwargs):
         status_id = kwargs.get("pk")
-        user = get_object_or_404(Status, id=status_id)
-        user.delete()
+        status = get_object_or_404(Status, id=status_id)
+        if Task.objects.filter(status=status).exists():
+            messages.error(request, _("Unable to delete status"))
+            return redirect('statuses.index')
+
+
+        status.delete()
         messages.add_message(request, messages.INFO, _("Status successfully deleted"))
 
         return redirect("statuses.index")

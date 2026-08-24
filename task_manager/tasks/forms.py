@@ -8,6 +8,8 @@ class TaskCreateForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         # Кастомизируем отображение лейблов
         self.fields['executor'].label_from_instance = lambda obj: f"{obj.first_name} {obj.last_name}"
+        self.fields['executor'].required = False
+        self.fields['labels'].required = False
 
     class Meta:
         model = Task

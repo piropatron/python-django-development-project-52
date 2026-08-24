@@ -39,17 +39,18 @@ class CreateView(LoginRequiredMixin, View):
 class DeleteView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         task_id = kwargs.get("pk")
+        task = get_object_or_404(Task, id=task_id)
+        if task.author is not request.user:
+            messages.add_message(request, messages.INFO, _('A task can only be deleted by its author'))
+            return redirect('tasks.index')
 
         return render(
             request, "tasks/delete.html", {"task_id": task_id}
         )
 
     def post(self, request, *args, **kwargs):
-        status_id = kwargs.get("pk")
-        task = get_object_or_404(Task, id=status_id)
-        # if task.author is not request.user:
-        #     messages.add_message(request, messages.INFO, _('A task can only be deleted by its author.'))
-        #     return redirect('tasks.index')
+        task_id = kwargs.get("pk")
+        task = get_object_or_404(Task, id=task_id)
 
         task.delete()
         messages.add_message(request, messages.INFO, _("Task successfully deleted"))

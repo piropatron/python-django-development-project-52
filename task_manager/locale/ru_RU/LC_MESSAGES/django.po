@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-24 21:22+0000\n"
+"POT-Creation-Date: 2026-08-24 23:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,15 +56,19 @@ msgstr "Статус"
 msgid "Statuses"
 msgstr "Статусы"
 
-#: task_manager/statuses/views.py:39
+#: task_manager/statuses/views.py:41
 msgid "Status successfully created"
 msgstr "Статус успешно создан"
 
-#: task_manager/statuses/views.py:57
+#: task_manager/statuses/views.py:59
+msgid "Unable to delete status"
+msgstr "Невозможно удалить статус"
+
+#: task_manager/statuses/views.py:64
 msgid "Status successfully deleted"
 msgstr "Статус успешно удален"
 
-#: task_manager/statuses/views.py:77
+#: task_manager/statuses/views.py:84
 msgid "Status successfully modified"
 msgstr "Статус успешно изменен"
 
@@ -100,20 +104,20 @@ msgstr "Задача"
 msgid "Tasks"
 msgstr "Задачи"
 
-#: task_manager/tasks/tests.py:93 task_manager/tasks/views.py:31
+#: task_manager/tasks/tests.py:93 task_manager/tasks/views.py:33
 msgid "Task successfully created"
 msgstr "Задача успешно создана"
 
-#: task_manager/tasks/tests.py:133 task_manager/tasks/views.py:96
+#: task_manager/tasks/tests.py:133 task_manager/tasks/views.py:99
 msgid "Task successfully updated"
 msgstr "Задача успешно изменена"
 
-#: task_manager/tasks/tests.py:163 task_manager/tasks/views.py:53
+#: task_manager/tasks/tests.py:163 task_manager/tasks/views.py:56
 msgid "Task successfully deleted"
 msgstr "Задача успешно удалена"
 
-#: task_manager/tasks/views.py:49
-msgid "A task can only be deleted by its author."
+#: task_manager/tasks/views.py:44
+msgid "A task can only be deleted by its author"
 msgstr "Задачу может удалить только ее автор"
 
 #: task_manager/templates/auth/user_update_form.html:5
@@ -334,22 +338,25 @@ msgstr "Подтверждение пароля"
 msgid "Enter the same password as before, for verification."
 msgstr "Введите тот же пароль, что и раньше, для подтверждения."
 
-#: task_manager/users/views.py:39
+#: task_manager/users/views.py:38
 msgid "The user has been successfully registered"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: task_manager/users/views.py:49
+#: task_manager/users/views.py:48
 msgid "You do not have permission to make changes"
 msgstr "У вас нет прав для изменения"
 
-#: task_manager/users/views.py:64
+#: task_manager/users/views.py:63
 msgid "User successfully modified"
 msgstr "Пользователь успешно изменен"
 
-#: task_manager/users/views.py:85
+#: task_manager/users/views.py:84
 msgid "Unable to delete user"
 msgstr "Невозможно удалить пользователя"
 
-#: task_manager/users/views.py:89
+#: task_manager/users/views.py:88
 msgid "User successfully deleted"
 msgstr "Пользователь успешно удален"
+
+#~ msgid "A task can only be deleted by its author."
+#~ msgstr "Задачу может удалить только ее автор"
