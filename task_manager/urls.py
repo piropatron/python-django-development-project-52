@@ -16,10 +16,9 @@ Including another URLconf
 """
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.contrib.auth import views as auth_views
 from django.urls import include, path
 
-from task_manager.views import IndexView, CustomLoginView, CustomLogoutView
+from task_manager.views import CustomLoginView, CustomLogoutView, IndexView
 
 from . import settings
 

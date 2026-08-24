@@ -8,6 +8,7 @@ from django.views import View
 from ..tasks.models import Task
 from .forms import UserChangeForm, UserForm
 
+
 class IndexView(View):
     def get(self, request, *args, **kwargs):
         users = User.objects.all()
