@@ -82,10 +82,14 @@
                 </td>
                 <td class="p-4 text-left border border-gray-300">{{ task.status.name }}</td>
                 <td class="p-4 text-left border border-gray-300">
+                    {% if task.author %}
                     {{ task.author.first_name }} {{ task.author.last_name }} {{ task.author.username }}
+                    {% endif %}
                 </td>
                 <td class="p-4 text-left border border-gray-300">
+                    {% if task.executor %}
                     {{ task.executor.first_name }} {{ task.executor.last_name }} {{ task.executor.username }}
+                    {% endif %}
                 </td>
                 <td class="p-4 text-left border border-gray-300">{{ task.created_at }}</td>
                 <td class="p-4 text-left border border-gray-300">
