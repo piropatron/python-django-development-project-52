@@ -35,6 +35,8 @@ DEBUG = os.getenv("DEBUG_ENABLED", False)
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
+    'webserver',
+    'webserver:9000',
     os.getenv("ALLOWED_HOST", '')
 ]
 
